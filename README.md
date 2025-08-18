@@ -6,7 +6,7 @@ This repository hosts my personal engineering portfolio, built with [GitHub Page
 
 
 ## About
-I’m a mechanical/robotics engineering student interested in design, prototyping, and controls.  
+I’m a junior studying mechanical engineering at Boston University with a concentration in robotics.
 This site highlights my **projects**, **skills**, and **experience**.
 
 
