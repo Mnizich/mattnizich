@@ -2,7 +2,6 @@
 
 This repository hosts my personal engineering portfolio, built with [GitHub Pages](https://pages.github.com/).
 
-🌐 Live site: [https://<your-username>.github.io](https://<your-username>.github.io)
 
 ---
 
@@ -18,7 +17,3 @@ This site highlights my **projects**, **skills**, and **experience**.
 - `img/` — images/screenshots for projects
 
 ---
-
-## License
-This site’s code is open-sourced under the MIT license.  
-Feel free to reference it, but please do not reuse my personal info, resume, or images.
