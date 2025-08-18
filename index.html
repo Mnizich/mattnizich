@@ -45,17 +45,17 @@
     /* Tabs as full rectangles */
     .tabs { display: flex; gap: 0; }
     .tab-btn {
-      border: none;               /* remove borders */
-      border-radius: 0;           /* remove rounding */
-      background: var(--card);    /* card color */
+      border: none;
+      border-radius: 0;           /* sharp corners */
+      background: var(--card);
       color: var(--fg);
       padding: 12px 20px;
       font-size: 14px;
       cursor: pointer;
-      flex: 1;                    /* equal width for all buttons */
+      flex: 1;
       transition: background 0.2s;
     }
-    .tab-btn:hover { background: #e0e0e0; } /* slightly darker on hover */
+    .tab-btn:hover { background: #e0e0e0; }
     .tab-btn[aria-selected="true"] { background: var(--accent); color: #fff; }
 
     main { padding: 24px 0 80px; }
@@ -63,9 +63,10 @@
     section[role="tabpanel"] { display: none; }
     section[role="tabpanel"].active { display: block; }
 
+    /* Hero and cards sharp rectangles */
     .hero {
       display: grid; grid-template-columns: 120px 1fr; gap: 20px; align-items: center;
-      padding: 24px; border: 1px solid var(--border); background: var(--card); border-radius: 16px;
+      padding: 24px; border: 1px solid var(--border); background: var(--card); border-radius: 0;
     }
     .avatar { width: 120px; height: 120px; border-radius: 999px; border: 2px solid var(--border); object-fit: cover; }
     h1 { margin: 0; font-size: 28px; }
@@ -73,7 +74,7 @@
     .chip { display: inline-block; padding: 4px 10px; border-radius: 999px; background: var(--bg); border: 1px solid var(--border); font-size: 12px; margin-right: 6px; }
 
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
-    .card { border: 1px solid var(--border); background: var(--card); border-radius: 16px; padding: 16px; }
+    .card { border: 1px solid var(--border); background: var(--card); border-radius: 0; padding: 16px; }
     .card h3 { margin-top: 0; margin-bottom: 6px; }
     .card p { margin-top: 6px; }
     .card footer { margin-top: 12px; font-size: 14px; }
@@ -82,7 +83,7 @@
     .list li { padding: 12px 0; border-bottom: 1px dashed var(--border); }
 
     pre {
-      background: var(--code); color: #e5e7eb; padding: 12px; border-radius: 10px; overflow-x: auto;
+      background: var(--code); color: #e5e7eb; padding: 12px; border-radius: 0; overflow-x: auto;
       border: 1px solid var(--border);
     }
 
@@ -112,36 +113,34 @@
 
   <main class="container">
     <!-- ABOUT -->
-  <section id="about" role="tabpanel" class="active" aria-labelledby="About">
-    <div class="hero">
-      <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" alt="Your headshot" class="avatar" />
-      <div>
-        <h1>Matthew Nizich</h1>
-        <div class="subtitle">Bayside, NY · Boston, MA</div>
-        <p>
-          My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at Boston University. I’m passionate about robotics, mechanical systems, and hands-on design, with a strong interest in prototyping and embedded systems. Outside of academics, I’ve spent time mentoring and teaching students in robotics and electronics, leading week-long courses where I guide them through engineering principles using elements such as Arduino, truss designs, and CAD. At BU, I work on the mechanical team for the Mars Rover Club, applying my mechanical and problem-solving skills to collaborative design challenges. My technical experience includes CAD, 3D printing, laser cutting, machining and more. My main passion is for robotics and aerospace, though I am still interested in any mechanical field.
-        </p>
+    <section id="about" role="tabpanel" class="active" aria-labelledby="About">
+      <div class="hero">
+        <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" alt="Your headshot" class="avatar" />
         <div>
-          <span class="chip">CAD</span>
-          <span class="chip">Robotics</span>
-          <span class="chip">Machining</span>
+          <h1>Matthew Nizich</h1>
+          <div class="subtitle">Bayside, NY · Boston, MA</div>
+          <p>
+            My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at Boston University. I’m passionate about robotics, mechanical systems, and hands-on design, with a strong interest in prototyping and embedded systems. Outside of academics, I’ve spent time mentoring and teaching students in robotics and electronics, leading week-long courses where I guide them through engineering principles using elements such as Arduino, truss designs, and CAD. At BU, I work on the mechanical team for the Mars Rover Club, applying my mechanical and problem-solving skills to collaborative design challenges. My technical experience includes CAD, 3D printing, laser cutting, machining and more. My main passion is for robotics and aerospace, though I am still interested in any mechanical field.
+          </p>
+          <div>
+            <span class="chip">CAD</span>
+            <span class="chip">Robotics</span>
+            <span class="chip">Machining</span>
+          </div>
+          <p>
+            <a href="https://www.linkedin.com/in/matthew-nizich-b3b758293/" target="_blank" rel="noreferrer">LinkedIn</a> ·
+            <a href="#contact">Email</a> ·
+            <a href="resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+          </p>
         </div>
-        <p>
-          <a href="https://www.linkedin.com/in/matthew-nizich-bu/" target="_blank" rel="noreferrer">LinkedIn</a> ·
-          <a href="#contact">Email</a> ·
-          <a href="resume.pdf" target="_blank" rel="noreferrer">Resume</a>
-        </p>
       </div>
-    </div>
-  </section>
-
+    </section>
 
     <!-- PROJECTS -->
     <section id="projects" role="tabpanel" aria-labelledby="Projects">
       <h2>Projects</h2>
       <p class="subtitle">A few things I’ve built or contributed to.</p>
       <div class="grid" id="project-grid">
-        <!-- Example project card. Duplicate and edit. -->
         <article class="card">
           <h3>Sample Project Title</h3>
           <p>Short description of what it is, what you did, and the outcome. Add metrics if possible.</p>
@@ -219,16 +218,12 @@ Hi Matthew, I found your portfolio and would love to connect about [topic].
   </footer>
 
   <script>
-    // Simple tabs via buttons + hash routing
     const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
     const panels = Array.from(document.querySelectorAll('section[role="tabpanel"]'));
 
     function show(id) {
       panels.forEach(p => p.classList.toggle('active', p.id === id));
-      tabButtons.forEach(b => {
-        const on = b.dataset.target === id;
-        b.setAttribute('aria-selected', on ? 'true' : 'false');
-      });
+      tabButtons.forEach(b => b.setAttribute('aria-selected', b.dataset.target === id ? 'true' : 'false'));
     }
 
     function initFromHash() {
@@ -237,13 +232,12 @@ Hi Matthew, I found your portfolio and would love to connect about [topic].
     }
 
     tabButtons.forEach(btn => btn.addEventListener('click', () => {
-      const id = btn.dataset.target; location.hash = id; // updates and triggers listener
+      const id = btn.dataset.target; location.hash = id;
     }));
 
     window.addEventListener('hashchange', initFromHash);
     initFromHash();
 
-    // Year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
