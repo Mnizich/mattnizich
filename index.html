@@ -5,26 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Matthew Nizich — Portfolio</title>
   <meta name="description" content="Engineer portfolio: projects, experience, skills, and contact." />
-
-  <!-- Load Open Sans font -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
    :root {
       --bg: #f8f5e9;       /* eggshell white background */
       --fg: #0f172a;       /* slate-900 text */
       --muted: #475569;    /* slate-600 muted text */
-      --card: #ffffff;     /* white card background */
+      --card: #ffffff;     /* slate-50 card background */
       --accent: #2563eb;   /* blue-600 accent */
       --border: #e2e8f0;   /* slate-200 border */
       --code: #0b1020;     /* code background */
   }
-
     * { box-sizing: border-box; }
     html, body { height: 100%; }
     body {
       margin: 0;
-      font-family: 'Open Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-family: 'Open Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       background: var(--bg);
       color: var(--fg);
       line-height: 1.6;
@@ -47,18 +43,19 @@
     .brand { font-weight: 800; letter-spacing: .2px; }
 
     /* Tabs as full rectangles */
-    .tabs { display: flex; gap: 0; flex-wrap: wrap; }
+    .tabs { display: flex; gap: 0; }
     .tab-btn {
-      border: none;
-      background: var(--card);
+      border: none;               /* remove borders */
+      border-radius: 0;           /* remove rounding */
+      background: var(--card);    /* card color */
       color: var(--fg);
       padding: 12px 20px;
       font-size: 14px;
       cursor: pointer;
-      flex: 1; /* makes buttons equal width */
+      flex: 1;                    /* equal width for all buttons */
       transition: background 0.2s;
     }
-    .tab-btn:hover { background: #e0e0e0; }
+    .tab-btn:hover { background: #e0e0e0; } /* slightly darker on hover */
     .tab-btn[aria-selected="true"] { background: var(--accent); color: #fff; }
 
     main { padding: 24px 0 80px; }
@@ -119,10 +116,10 @@
       <div class="hero">
         <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" alt="Your headshot" class="avatar" />
         <div>
-          <h1>[Matthew Nizich]</h1>
+          <h1>Matthew Nizich</h1>
           <div class="subtitle">Junior Studying Mechanical Engineering at Boston University.</div>
           <p>
-I am a junior studying Mechanical Engineering at Boston University. I’m passionate about robotics, mechanical systems, and hands-on design, with a strong interest in prototyping and embedded systems. Outside of academics, I’ve spent time mentoring and teaching students in robotics and electronics, leading week-long courses where I guide them through engineering principles using elements such as Arduino, truss designs, and CAD. At BU, I work on the mechanical team for the Mars Rover Club, applying my mechanical and problem-solving skills to collaborative design challenges. My technical experience includes CAD, 3D printing, laser cutting, machining, and more. My main passion is for robotics and aerospace, though I am still interested in any mechanical field.
+            My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at Boston University. I’m passionate about robotics, mechanical systems, and hands-on design, with a strong interest in prototyping and embedded systems. Outside of academics, I’ve spent time mentoring and teaching students in robotics and electronics, leading week-long courses where I guide them through engineering principles using elements such as Arduino, truss designs, and CAD. At BU, I work on the mechanical team for the Mars Rover Club, applying my mechanical and problem-solving skills to collaborative design challenges. My technical experience includes CAD, 3D printing, laser cutting, machining and more. My main passion is for robotics and aerospace, though I am still interested in any mechanical field.
           </p>
           <div>
             <span class="chip">CAD</span>
@@ -159,6 +156,17 @@ I am a junior studying Mechanical Engineering at Boston University. I’m passio
             <a href="#" target="_blank" rel="noreferrer">Write-up</a>
           </footer>
         </article>
+        <article class="card">
+          <h3>Another Project</h3>
+          <p>What problem did this solve? What was your role? What was the result?</p>
+          <div>
+            <span class="chip">CAD</span>
+            <span class="chip">FEA</span>
+          </div>
+          <footer>
+            <a href="#" target="_blank" rel="noreferrer">Demo</a>
+          </footer>
+        </article>
       </div>
     </section>
 
@@ -169,6 +177,10 @@ I am a junior studying Mechanical Engineering at Boston University. I’m passio
         <li>
           <strong>Role @ Organization</strong> — <em>Dates</em>
           <div class="muted">1–2 line summary of what you did and the impact. Use numbers where you can.</div>
+        </li>
+        <li>
+          <strong>Another Role @ Company</strong> — <em>Dates</em>
+          <div class="muted">Your contributions, tools used, and outcomes.</div>
         </li>
       </ul>
     </section>
@@ -197,9 +209,9 @@ I am a junior studying Mechanical Engineering at Boston University. I’m passio
       <h2>Contact</h2>
       <p>Email: <a href="mailto:you@domain.com">you@domain.com</a></p>
       <p>Prefer a quick intro? Paste this into your email:</p>
-      <pre>Subject: Quick intro — [Your Name]
-Hi [Your Name], I found your portfolio and would love to connect about [topic].
-— [Your Name], [Role/Org]</pre>
+      <pre>Subject: Quick intro — Matthew Nizich
+Hi Matthew, I found your portfolio and would love to connect about [topic].
+— Matthew Nizich, Mechanical Engineering Student</pre>
     </section>
   </main>
 
@@ -226,7 +238,7 @@ Hi [Your Name], I found your portfolio and would love to connect about [topic].
     }
 
     tabButtons.forEach(btn => btn.addEventListener('click', () => {
-      const id = btn.dataset.target; location.hash = id;
+      const id = btn.dataset.target; location.hash = id; // updates and triggers listener
     }));
 
     window.addEventListener('hashchange', initFromHash);
@@ -235,5 +247,6 @@ Hi [Your Name], I found your portfolio and would love to connect about [topic].
     // Year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
