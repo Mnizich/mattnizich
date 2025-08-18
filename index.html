@@ -7,28 +7,24 @@
   <meta name="description" content="Engineer portfolio: projects, experience, skills, and contact." />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-   :root {
-      --bg: #f4f4f5;       /* eggshell white background */
-      --fg: #0f172a;       /* slate-900 text */
-      --muted: #475569;    /* slate-600 muted text */
-      --card: #ffffff;     /* slate-50 card background */
-      --accent: #2563eb;   /* blue-600 accent */
-      --border: #e2e8f0;   /* slate-200 border */
-      --code: #0b1020;     /* code background */
-  }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: 'Open Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background: var(--bg);
-      color: var(--fg);
-      line-height: 1.6;
+    :root {
+      --bg: #ffffff;        /* content background */
+      --fg: #0f172a;        /* dark text */
+      --muted: #475569;     /* muted text */
+      --card: #ffffff;       /* card background */
+      --accent: #2563eb;    /* blue accent */
+      --border: #e2e8f0;    /* borders */
+      --outer: #0f172a;     /* dark navy outer background */
+      --code: #0b1020;      /* code background */
     }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; font-family: 'Open Sans', sans-serif; background: var(--outer); color: var(--fg); line-height: 1.6; }
+
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .container { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+    .container { max-width: 980px; margin: 40px auto; padding: 0 20px; background: var(--bg); border-radius: 0; }
 
     header {
       position: sticky; top: 0; z-index: 20;
@@ -42,11 +38,11 @@
     }
     .brand { font-weight: 800; letter-spacing: .2px; }
 
-    /* Tabs as full rectangles */
+    /* Tabs as sharp rectangles */
     .tabs { display: flex; gap: 0; }
     .tab-btn {
       border: none;
-      border-radius: 0;           /* sharp corners */
+      border-radius: 0;
       background: var(--card);
       color: var(--fg);
       padding: 12px 20px;
@@ -63,7 +59,6 @@
     section[role="tabpanel"] { display: none; }
     section[role="tabpanel"].active { display: block; }
 
-    /* Hero and cards sharp rectangles */
     .hero {
       display: grid; grid-template-columns: 120px 1fr; gap: 20px; align-items: center;
       padding: 24px; border: 1px solid var(--border); background: var(--card); border-radius: 0;
@@ -71,7 +66,7 @@
     .avatar { width: 120px; height: 120px; border-radius: 999px; border: 2px solid var(--border); object-fit: cover; }
     h1 { margin: 0; font-size: 28px; }
     .subtitle { color: var(--muted); margin-top: 6px; }
-    .chip { display: inline-block; padding: 4px 10px; border-radius: 999px; background: var(--bg); border: 1px solid var(--border); font-size: 12px; margin-right: 6px; }
+    .chip { display: inline-block; padding: 4px 10px; border-radius: 0; background: var(--bg); border: 1px solid var(--border); font-size: 12px; margin-right: 6px; }
 
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
     .card { border: 1px solid var(--border); background: var(--card); border-radius: 0; padding: 16px; }
@@ -154,17 +149,6 @@
             <a href="#" target="_blank" rel="noreferrer">Write-up</a>
           </footer>
         </article>
-        <article class="card">
-          <h3>Another Project</h3>
-          <p>What problem did this solve? What was your role? What was the result?</p>
-          <div>
-            <span class="chip">CAD</span>
-            <span class="chip">FEA</span>
-          </div>
-          <footer>
-            <a href="#" target="_blank" rel="noreferrer">Demo</a>
-          </footer>
-        </article>
       </div>
     </section>
 
@@ -175,10 +159,6 @@
         <li>
           <strong>Role @ Organization</strong> — <em>Dates</em>
           <div class="muted">1–2 line summary of what you did and the impact. Use numbers where you can.</div>
-        </li>
-        <li>
-          <strong>Another Role @ Company</strong> — <em>Dates</em>
-          <div class="muted">Your contributions, tools used, and outcomes.</div>
         </li>
       </ul>
     </section>
@@ -193,7 +173,7 @@
         </div>
         <div class="card">
           <h3>Robotics & Controls</h3>
-          <p>Arduino, microcontrollers, kinematics, control systems, sensors, Actuator selection.</p>
+          <p>Arduino, microcontrollers, kinematics, control systems, sensors, actuator selection.</p>
         </div>
         <div class="card">
           <h3>Software</h3>
@@ -223,7 +203,10 @@ Hi Matthew, I found your portfolio and would love to connect about [topic].
 
     function show(id) {
       panels.forEach(p => p.classList.toggle('active', p.id === id));
-      tabButtons.forEach(b => b.setAttribute('aria-selected', b.dataset.target === id ? 'true' : 'false'));
+      tabButtons.forEach(b => {
+        const on = b.dataset.target === id;
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
     }
 
     function initFromHash() {
@@ -240,6 +223,5 @@ Hi Matthew, I found your portfolio and would love to connect about [topic].
 
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-
 </body>
 </html>
