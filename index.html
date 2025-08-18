@@ -8,34 +8,52 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #ffffff;        /* content background */
-      --fg: #0f172a;        /* dark text */
-      --muted: #475569;     /* muted text */
-      --card: #ffffff;       /* card background */
-      --accent: #2563eb;    /* blue accent */
-      --border: #e2e8f0;    /* borders */
-      --outer: #0f172a;     /* dark navy outer background */
-      --code: #0b1020;      /* code background */
+      --outer: #0f172a;       /* navy side background */
+      --content-bg: #ffffff;  /* main content background */
+      --fg: #0f172a;          /* dark text */
+      --muted: #475569;       /* muted text */
+      --accent: #2563eb;      /* blue accent */
+      --border: #e2e8f0;      /* borders */
+      --code: #0b1020;        /* code background */
     }
 
     * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; font-family: 'Open Sans', sans-serif; background: var(--outer); color: var(--fg); line-height: 1.6; }
+    html, body { height: 100%; margin: 0; font-family: 'Open Sans', sans-serif; color: var(--fg); line-height: 1.6; }
 
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .container { max-width: 980px; margin: 40px auto; padding: 0 20px; background: var(--bg); border-radius: 0; }
+    body {
+      display: flex;
+      background: var(--outer);
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .content-wrapper {
+      width: 100%;
+      max-width: 980px;
+      background: var(--content-bg);
+      display: flex;
+      flex-direction: column;
+    }
 
     header {
-      position: sticky; top: 0; z-index: 20;
-      backdrop-filter: blur(8px);
-      background: color-mix(in oklab, var(--bg) 85%, transparent);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--content-bg);
       border-bottom: 1px solid var(--border);
     }
+
     .nav {
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       height: 64px;
+      padding: 0 20px;
     }
+
     .brand { font-weight: 800; letter-spacing: .2px; }
 
     /* Tabs as sharp rectangles */
@@ -43,7 +61,7 @@
     .tab-btn {
       border: none;
       border-radius: 0;
-      background: var(--card);
+      background: var(--content-bg);
       color: var(--fg);
       padding: 12px 20px;
       font-size: 14px;
@@ -54,22 +72,29 @@
     .tab-btn:hover { background: #e0e0e0; }
     .tab-btn[aria-selected="true"] { background: var(--accent); color: #fff; }
 
-    main { padding: 24px 0 80px; }
+    main { padding: 24px 20px 80px; }
 
     section[role="tabpanel"] { display: none; }
     section[role="tabpanel"].active { display: block; }
 
     .hero {
-      display: grid; grid-template-columns: 120px 1fr; gap: 20px; align-items: center;
-      padding: 24px; border: 1px solid var(--border); background: var(--card); border-radius: 0;
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 20px;
+      align-items: center;
+      padding: 24px;
+      border: 1px solid var(--border);
+      background: var(--content-bg);
+      border-radius: 0;
     }
+
     .avatar { width: 120px; height: 120px; border-radius: 999px; border: 2px solid var(--border); object-fit: cover; }
     h1 { margin: 0; font-size: 28px; }
     .subtitle { color: var(--muted); margin-top: 6px; }
-    .chip { display: inline-block; padding: 4px 10px; border-radius: 0; background: var(--bg); border: 1px solid var(--border); font-size: 12px; margin-right: 6px; }
+    .chip { display: inline-block; padding: 4px 10px; border-radius: 0; background: var(--content-bg); border: 1px solid var(--border); font-size: 12px; margin-right: 6px; }
 
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
-    .card { border: 1px solid var(--border); background: var(--card); border-radius: 0; padding: 16px; }
+    .card { border: 1px solid var(--border); background: var(--content-bg); border-radius: 0; padding: 16px; }
     .card h3 { margin-top: 0; margin-bottom: 6px; }
     .card p { margin-top: 6px; }
     .card footer { margin-top: 12px; font-size: 14px; }
@@ -93,109 +118,111 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav" role="tablist" aria-label="Sections">
-      <div class="brand">Matthew Nizich</div>
-      <div class="tabs">
-        <button class="tab-btn" role="tab" aria-controls="about" aria-selected="true" data-target="about">About</button>
-        <button class="tab-btn" role="tab" aria-controls="projects" aria-selected="false" data-target="projects">Projects</button>
-        <button class="tab-btn" role="tab" aria-controls="experience" aria-selected="false" data-target="experience">Experience</button>
-        <button class="tab-btn" role="tab" aria-controls="skills" aria-selected="false" data-target="skills">Skills</button>
-        <button class="tab-btn" role="tab" aria-controls="contact" aria-selected="false" data-target="contact">Contact</button>
+  <div class="content-wrapper">
+    <header>
+      <div class="nav" role="tablist" aria-label="Sections">
+        <div class="brand">Matthew Nizich</div>
+        <div class="tabs">
+          <button class="tab-btn" role="tab" aria-controls="about" aria-selected="true" data-target="about">About</button>
+          <button class="tab-btn" role="tab" aria-controls="projects" aria-selected="false" data-target="projects">Projects</button>
+          <button class="tab-btn" role="tab" aria-controls="experience" aria-selected="false" data-target="experience">Experience</button>
+          <button class="tab-btn" role="tab" aria-controls="skills" aria-selected="false" data-target="skills">Skills</button>
+          <button class="tab-btn" role="tab" aria-controls="contact" aria-selected="false" data-target="contact">Contact</button>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main class="container">
-    <!-- ABOUT -->
-    <section id="about" role="tabpanel" class="active" aria-labelledby="About">
-      <div class="hero">
-        <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" alt="Your headshot" class="avatar" />
-        <div>
-          <h1>Matthew Nizich</h1>
-          <div class="subtitle">Bayside, NY · Boston, MA</div>
-          <p>
-            My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at Boston University. I’m passionate about robotics, mechanical systems, and hands-on design, with a strong interest in prototyping and embedded systems. Outside of academics, I’ve spent time mentoring and teaching students in robotics and electronics, leading week-long courses where I guide them through engineering principles using elements such as Arduino, truss designs, and CAD. At BU, I work on the mechanical team for the Mars Rover Club, applying my mechanical and problem-solving skills to collaborative design challenges. My technical experience includes CAD, 3D printing, laser cutting, machining and more. My main passion is for robotics and aerospace, though I am still interested in any mechanical field.
-          </p>
+    <main>
+      <!-- ABOUT -->
+      <section id="about" role="tabpanel" class="active" aria-labelledby="About">
+        <div class="hero">
+          <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" alt="Your headshot" class="avatar" />
           <div>
-            <span class="chip">CAD</span>
-            <span class="chip">Robotics</span>
-            <span class="chip">Machining</span>
+            <h1>Matthew Nizich</h1>
+            <div class="subtitle">Bayside, NY · Boston, MA</div>
+            <p>
+              My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at Boston University. I’m passionate about robotics, mechanical systems, and hands-on design, with a strong interest in prototyping and embedded systems. Outside of academics, I’ve spent time mentoring and teaching students in robotics and electronics, leading week-long courses where I guide them through engineering principles using elements such as Arduino, truss designs, and CAD. At BU, I work on the mechanical team for the Mars Rover Club, applying my mechanical and problem-solving skills to collaborative design challenges. My technical experience includes CAD, 3D printing, laser cutting, machining and more. My main passion is for robotics and aerospace, though I am still interested in any mechanical field.
+            </p>
+            <div>
+              <span class="chip">CAD</span>
+              <span class="chip">Robotics</span>
+              <span class="chip">Machining</span>
+            </div>
+            <p>
+              <a href="https://www.linkedin.com/in/matthew-nizich-b3b758293/" target="_blank" rel="noreferrer">LinkedIn</a> ·
+              <a href="#contact">Email</a> ·
+              <a href="resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+            </p>
           </div>
-          <p>
-            <a href="https://www.linkedin.com/in/matthew-nizich-b3b758293/" target="_blank" rel="noreferrer">LinkedIn</a> ·
-            <a href="#contact">Email</a> ·
-            <a href="resume.pdf" target="_blank" rel="noreferrer">Resume</a>
-          </p>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" role="tabpanel" aria-labelledby="Projects">
-      <h2>Projects</h2>
-      <p class="subtitle">A few things I’ve built or contributed to.</p>
-      <div class="grid" id="project-grid">
-        <article class="card">
-          <h3>Sample Project Title</h3>
-          <p>Short description of what it is, what you did, and the outcome. Add metrics if possible.</p>
-          <div>
-            <span class="chip">Onshape</span>
-            <span class="chip">Arduino</span>
-            <span class="chip">Python</span>
+      <!-- PROJECTS -->
+      <section id="projects" role="tabpanel" aria-labelledby="Projects">
+        <h2>Projects</h2>
+        <p class="subtitle">A few things I’ve built or contributed to.</p>
+        <div class="grid" id="project-grid">
+          <article class="card">
+            <h3>Sample Project Title</h3>
+            <p>Short description of what it is, what you did, and the outcome. Add metrics if possible.</p>
+            <div>
+              <span class="chip">Onshape</span>
+              <span class="chip">Arduino</span>
+              <span class="chip">Python</span>
+            </div>
+            <footer>
+              <a href="#" target="_blank" rel="noreferrer">Code</a> •
+              <a href="#" target="_blank" rel="noreferrer">Write-up</a>
+            </footer>
+          </article>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" role="tabpanel" aria-labelledby="Experience">
+        <h2>Experience</h2>
+        <ul class="list">
+          <li>
+            <strong>Role @ Organization</strong> — <em>Dates</em>
+            <div class="muted">1–2 line summary of what you did and the impact. Use numbers where you can.</div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" role="tabpanel" aria-labelledby="Skills">
+        <h2>Skills</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Mechanical</h3>
+            <p>CAD (Onshape/SolidWorks), FEA, GD&T, DFM, machining, 3D printing.</p>
           </div>
-          <footer>
-            <a href="#" target="_blank" rel="noreferrer">Code</a> •
-            <a href="#" target="_blank" rel="noreferrer">Write-up</a>
-          </footer>
-        </article>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" role="tabpanel" aria-labelledby="Experience">
-      <h2>Experience</h2>
-      <ul class="list">
-        <li>
-          <strong>Role @ Organization</strong> — <em>Dates</em>
-          <div class="muted">1–2 line summary of what you did and the impact. Use numbers where you can.</div>
-        </li>
-      </ul>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" role="tabpanel" aria-labelledby="Skills">
-      <h2>Skills</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Mechanical</h3>
-          <p>CAD (Onshape/SolidWorks), FEA, GD&T, DFM, machining, 3D printing.</p>
+          <div class="card">
+            <h3>Robotics & Controls</h3>
+            <p>Arduino, microcontrollers, kinematics, control systems, sensors, actuator selection.</p>
+          </div>
+          <div class="card">
+            <h3>Software</h3>
+            <p>Python, MATLAB, C/C++, Git, basic web (HTML/CSS/JS).</p>
+          </div>
         </div>
-        <div class="card">
-          <h3>Robotics & Controls</h3>
-          <p>Arduino, microcontrollers, kinematics, control systems, sensors, actuator selection.</p>
-        </div>
-        <div class="card">
-          <h3>Software</h3>
-          <p>Python, MATLAB, C/C++, Git, basic web (HTML/CSS/JS).</p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- CONTACT -->
-    <section id="contact" role="tabpanel" aria-labelledby="Contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:you@domain.com">you@domain.com</a></p>
-      <p>Prefer a quick intro? Paste this into your email:</p>
-      <pre>Subject: Quick intro — Matthew Nizich
+      <!-- CONTACT -->
+      <section id="contact" role="tabpanel" aria-labelledby="Contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:you@domain.com">you@domain.com</a></p>
+        <p>Prefer a quick intro? Paste this into your email:</p>
+        <pre>Subject: Quick intro — Matthew Nizich
 Hi Matthew, I found your portfolio and would love to connect about [topic].
 — Matthew Nizich, Mechanical Engineering Student</pre>
-    </section>
-  </main>
+      </section>
+    </main>
 
-  <footer class="site">
-    © <span id="year"></span> Matthew Nizich · Built with GitHub Pages
-  </footer>
+    <footer class="site">
+      © <span id="year"></span> Matthew Nizich · Built with GitHub Pages
+    </footer>
+  </div>
 
   <script>
     const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
