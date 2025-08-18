@@ -25,9 +25,11 @@
 
     body {
       display: flex;
-      background: var(--outer);
       justify-content: center;
+      align-items: flex-start; /* start at top */
+      background: var(--outer);
       min-height: 100vh;
+      padding: 20px 0; /* optional padding so shadow isn’t cut off */
     }
 
     .content-wrapper {
@@ -36,6 +38,7 @@
       background: var(--content-bg);
       display: flex;
       flex-direction: column;
+      min-height: 100vh; /* fill viewport */
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     }
 
@@ -72,7 +75,7 @@
     .tab-btn:hover { background: #e0e0e0; }
     .tab-btn[aria-selected="true"] { background: var(--accent); color: #fff; }
 
-    main { padding: 24px 20px 80px; }
+    main { padding: 24px 20px 80px; flex: 1; } /* flex:1 ensures it grows */
 
     section[role="tabpanel"] { display: none; }
     section[role="tabpanel"].active { display: block; }
@@ -109,6 +112,7 @@
 
     footer.site {
       border-top: 1px solid var(--border); padding: 20px 0; text-align: center; color: var(--muted);
+      margin-top: auto; /* push footer to bottom if content is short */
     }
 
     @media (max-width: 600px) {
@@ -220,7 +224,7 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
             <p>3D CAD of a robot arm demonstrating joint articulation.</p>
           </div>
           
-          <!-- Example MP4 animation -->
+          <!-- Example MP4 animation grouped with image -->
           <div class="card">
             <div class="media-group" style="border:1px solid var(--border); padding: 4px;">
               <img src="images/BallValve.png" alt="Ball Valve Image" style="width:100%;" />
