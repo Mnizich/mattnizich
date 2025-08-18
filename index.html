@@ -29,15 +29,13 @@
       justify-content: center;
       min-height: 100vh;
     }
-    
-    /* Add shadow to the content wrapper */
+
     .content-wrapper {
       width: 100%;
       max-width: 980px;
       background: var(--content-bg);
       display: flex;
       flex-direction: column;
-      /* subtle shadow to separate from navy sidebars */
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     }
 
@@ -59,7 +57,6 @@
 
     .brand { font-weight: 800; letter-spacing: .2px; }
 
-    /* Tabs as sharp rectangles */
     .tabs { display: flex; gap: 0; }
     .tab-btn {
       border: none;
@@ -128,9 +125,9 @@
         <div class="tabs">
           <button class="tab-btn" role="tab" aria-controls="about" aria-selected="true" data-target="about">About</button>
           <button class="tab-btn" role="tab" aria-controls="projects" aria-selected="false" data-target="projects">Projects</button>
-          <button class="tab-btn" role="tab" aria-controls="cad-portfolio" aria-selected="false" data-target="cad-portfolio">CAD Portfolio</button>
           <button class="tab-btn" role="tab" aria-controls="experience" aria-selected="false" data-target="experience">Experience</button>
           <button class="tab-btn" role="tab" aria-controls="skills" aria-selected="false" data-target="skills">Skills</button>
+          <button class="tab-btn" role="tab" aria-controls="cad-portfolio" aria-selected="false" data-target="cad-portfolio">CAD Portfolio</button>
           <button class="tab-btn" role="tab" aria-controls="contact" aria-selected="false" data-target="contact">Contact</button>
         </div>
       </div>
@@ -156,7 +153,6 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
               <a href="https://www.linkedin.com/in/matthew-nizich-b3b758293/" target="_blank" rel="noreferrer">LinkedIn</a> ·
               <a href="#contact">Email</a> ·
               <a href="Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-
             </p>
           </div>
         </div>
@@ -180,22 +176,6 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
               <a href="#" target="_blank" rel="noreferrer">Write-up</a>
             </footer>
           </article>
-        </div>
-      </section>
-      <!-- CAD PORTFOLIO -->
-      <section id="cad-portfolio" role="tabpanel" aria-labelledby="CAD Portfolio">
-        <h2>CAD Portfolio</h2>
-        <p class="subtitle">Some of my CAD designs and mechanical models.</p>
-        <div class="grid">
-          <div class="card">
-            <img src="images/cad1.png" alt="Description of CAD model 1" style="width:100%; border:1px solid var(--border);" />
-            <p>Mechanical arm design — focus on joint articulation and load distribution.</p>
-          </div>
-          <div class="card">
-            <img src="Ball Valve.png" alt="Ball Valve Assembly" style="width:100%; border:1px solid var(--border);" />
-            <p>Mars Rover suspension prototype — optimized for rough terrain.</p>
-          </div>
-      <!-- Add more cards as needed -->
         </div>
       </section>
 
@@ -225,6 +205,28 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
           <div class="card">
             <h3>Software</h3>
             <p>Python, MATLAB, C/C++, Git, basic web (HTML/CSS/JS).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CAD PORTFOLIO -->
+      <section id="cad-portfolio" role="tabpanel" aria-labelledby="CAD Portfolio">
+        <h2>CAD Portfolio</h2>
+        <p class="subtitle">A showcase of my designs and mechanical concepts.</p>
+        <div class="grid" id="cad-grid">
+          <!-- Example static image -->
+          <div class="card">
+            <img src="images/robot-arm.png" alt="Robot Arm CAD" style="width:100%; border:1px solid var(--border);" />
+            <p>3D CAD of a robot arm demonstrating joint articulation.</p>
+          </div>
+          
+          <!-- Example MP4 animation -->
+          <div class="card">
+            <video autoplay loop muted playsinline style="width:100%; border:1px solid var(--border);">
+              <source src="videos/robot-arm-animation.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <p>Animated CAD of a mechanical arm demonstrating joint movement.</p>
           </div>
         </div>
       </section>
