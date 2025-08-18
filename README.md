@@ -12,8 +12,8 @@ This site highlights my **projects**, **skills**, and **experience**.
 
 
 ## Structure
-- `index.html` — main site
-- `resume.pdf` — my current resume
-- `img/` — images/screenshots for projects
+- `index.html` —main site
+- `resume.pdf` —my current resume
+- `img/` —images/screenshots from projects or other things
 
 
