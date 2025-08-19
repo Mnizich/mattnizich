@@ -1,126 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Matthew Nizich - Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Matthew Nizich — Portfolio</title>
+  <meta name="description" content="Engineer portfolio: projects, experience, skills, and contact." />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy: #0a1a33;
-      --content-bg: #ffffff;
-      --text: #ffffff;
-      --text-dark: #000000;
-      --border: #ccc;
+      --outer: #2b488c;       /* navy side background */
+      --content-bg: #ffffff;  /* main content background */
+      --fg: #0f172a;          /* dark text */
+      --muted: #475569;       /* muted text */
+      --accent: #2563eb;      /* blue accent */
+      --border: #e2e8f0;      /* borders */
+      --code: #0b1020;        /* code background */
     }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; font-family: 'Open Sans', sans-serif; color: var(--fg); line-height: 1.6; }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: var(--navy);
-      color: var(--text-dark);
-    }
-
-    .content {
-      background: var(--content-bg);
-      max-width: 1000px;
-      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* start at top */
+      background: var(--outer);
       min-height: 100vh;
-      padding: 40px;
-      box-sizing: border-box;
+      padding: 20px 0; /* optional padding so shadow isn’t cut off */
     }
 
-    h1, h2, h3 {
-      color: var(--text-dark);
+    .content-wrapper {
+      width: 100%;
+      max-width: 980px;
+      background: var(--content-bg);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* fill viewport */
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     }
 
-    a {
-      color: #004aad;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .section {
-      margin-bottom: 60px;
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--content-bg);
+      border-bottom: 1px solid var(--border);
     }
 
-    .card {
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      padding: 0 20px;
+    }
+
+    .brand { font-weight: 800; letter-spacing: .2px; }
+
+    .tabs { display: flex; gap: 0; }
+    .tab-btn {
+      border: none;
+      border-radius: 0;
+      background: var(--content-bg);
+      color: var(--fg);
+      padding: 12px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      flex: 1;
+      transition: background 0.2s;
+    }
+    .tab-btn:hover { background: #e0e0e0; }
+    .tab-btn[aria-selected="true"] { background: var(--accent); color: #fff; }
+
+    main { padding: 24px 20px 80px; flex: 1; } /* flex:1 ensures it grows */
+
+    section[role="tabpanel"] { display: none; }
+    section[role="tabpanel"].active { display: block; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 20px;
+      align-items: center;
+      padding: 24px;
       border: 1px solid var(--border);
       background: var(--content-bg);
       border-radius: 0;
-      padding: 16px;
-      height: auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 16px;
-      justify-content: center;
-    }
+    .avatar { width: 120px; height: 120px; border-radius: 999px; border: 2px solid var(--border); object-fit: cover; }
+    h1 { margin: 0; font-size: 28px; }
+    .subtitle { color: var(--muted); margin-top: 6px; }
+    .chip { display: inline-block; padding: 4px 10px; border-radius: 0; background: var(--content-bg); border: 1px solid var(--border); font-size: 12px; margin-right: 6px; }
 
-    /* Special grid for CAD Portfolio: max 3 columns */
-    #cad-grid {
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      max-width: 900px;
-      margin: 0 auto;
-    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .card { border: 1px solid var(--border); background: var(--content-bg); border-radius: 0; padding: 16px; }
+    .card h3 { margin-top: 0; margin-bottom: 6px; }
+    .card p { margin-top: 6px; }
+    .card footer { margin-top: 12px; font-size: 14px; }
 
-    img {
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 10px;
+    .list { list-style: none; padding: 0; margin: 0; }
+    .list li { padding: 12px 0; border-bottom: 1px dashed var(--border); }
+
+    pre {
+      background: var(--code); color: #e5e7eb; padding: 12px; border-radius: 0; overflow-x: auto;
       border: 1px solid var(--border);
+    }
+
+    footer.site {
+      border-top: 1px solid var(--border); padding: 20px 0; text-align: center; color: var(--muted);
+      margin-top: auto; /* push footer to bottom if content is short */
+    }
+
+    @media (max-width: 600px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .avatar { margin: 0 auto; }
     }
   </style>
 </head>
 <body>
-  <div class="content">
-    <section class="section" id="about">
-      <h1>About Me</h1>
-      <p>
-        My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at Boston University. 
-        I’m passionate about robotics, mechanical systems, and hands-on design, with a strong interest in 
-        making agile and autonomous mechanical systems. Outside of academics, I’ve spent time mentoring 
-        and teaching students in robotics and electronics, leading week-long courses where I guide them 
-        through engineering principles using elements such as Arduino, truss designs, and CAD. 
-      </p>
-      <p>
-        In my spare time I enjoy practicing Kendo and tinkering with my hobby builds and art pieces, 
-        which often leads me back to the lab I work at anyway thanks to all the wonderful machinery 
-        available there. As a lab advisor in my university's makerspace, my workplace is where I have 
-        honed my skills with 3D printing, laser cutting, and a wide range of other machinery. 
-        I also spend time in the workshop as a member of the mechanical team for the Mars Rover Club, 
-        applying my mechanical and problem-solving skills to collaborative design challenges. 
-      </p>
-      <p>
-        I am always eager to keep learning, building, and contributing to meaningful engineering projects.
-      </p>
-      <p>
-        📍 Boston, MA | <a href="https://www.linkedin.com/in/matthew-nizich-b3b758293/" target="_blank">LinkedIn</a> | 
-        <a href="resume.pdf" target="_blank">Resume</a>
-      </p>
-    </section>
-
-    <section class="section" id="portfolio">
-      <h2>CAD Portfolio</h2>
-      <div class="grid" id="cad-grid">
-        <!-- Example static images -->
-        <div class="card">
-          <img src="Gauge Block.png" alt="Gauge Block CAD" />
-          <img src="CAM Project.png" alt="CAM Project CAD" />
-          <img src="railing.png" alt="Railing CAD" />
-          <img src="capTop.png" alt="Cap CAD Top View" />
-          <img src="capBottom.png" alt="Cap CAD Bottom View" />
-          <p>A variety of models built for my ME357 CAD class.</p>
+  <div class="content-wrapper">
+    <header>
+      <div class="nav" role="tablist" aria-label="Sections">
+        <div class="brand">Matthew Nizich</div>
+        <div class="tabs">
+          <button class="tab-btn" role="tab" aria-controls="about" aria-selected="true" data-target="about">About</button>
+          <button class="tab-btn" role="tab" aria-controls="projects" aria-selected="false" data-target="projects">Projects</button>
+          <button class="tab-btn" role="tab" aria-controls="experience" aria-selected="false" data-target="experience">Experience</button>
+          <button class="tab-btn" role="tab" aria-controls="skills" aria-selected="false" data-target="skills">Skills</button>
+          <button class="tab-btn" role="tab" aria-controls="cad-portfolio" aria-selected="false" data-target="cad-portfolio">CAD Portfolio</button>
+          <button class="tab-btn" role="tab" aria-controls="contact" aria-selected="false" data-target="contact">Contact</button>
         </div>
       </div>
-    </section>
+    </header>
+
+    <main>
+      <!-- ABOUT -->
+      <section id="about" role="tabpanel" class="active" aria-labelledby="About">
+        <div class="hero">
+          <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" alt="Your headshot" class="avatar" />
+          <div>
+            <h1>Matthew Nizich</h1>
+            <div class="subtitle">Bayside, NY · Boston, MA</div>
+            <p>
+My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at Boston University. I’m passionate about robotics, mechanical systems, and hands-on design, with a strong interest in making agile and autonomous mechanical systems. Outside of academics, I’ve spent time mentoring and teaching students in robotics and electronics, leading week-long courses where I guide them through engineering principles using elements such as Arduino, truss designs, and CAD. In my spare time, I enjoy practicing Kendo and tinkering with my hobby builds and art pieces, which often lead me back to the lab I work at thanks to all the wonderful machinery available there. As a lab advisor in my university's makerspace, my workplace is where I have honed my skills with 3D printing, laser cutting, and a wide range of other machinery. I also spend time in the workshop as a member of the mechanical team for the Mars Rover Club, applying my mechanical and problem-solving skills to collaborative design challenges. Through these experiences and more, I continue to cultivate my engineering skills while exploring new ways to design, build, and innovate.
+            </p>
+            <div>
+              <span class="chip">CAD</span>
+              <span class="chip">Robotics</span>
+              <span class="chip">Machining</span>
+            </div>
+            <p>
+              <a href="https://www.linkedin.com/in/matthew-nizich-bu/" target="_blank" rel="noreferrer">LinkedIn</a> ·
+              <a href="#contact">Email</a> ·
+              <a href="Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" role="tabpanel" aria-labelledby="Projects">
+        <h2>Projects</h2>
+        <p class="subtitle">A few things I’ve built or contributed to.</p>
+        <div class="grid" id="project-grid">
+          <article class="card">
+            <h3>Sample Project Title</h3>
+            <p>Short description of what it is, what you did, and the outcome. Add metrics if possible.</p>
+            <div>
+              <span class="chip">Onshape</span>
+              <span class="chip">Arduino</span>
+              <span class="chip">Python</span>
+            </div>
+            <footer>
+              <a href="#" target="_blank" rel="noreferrer">Code</a> •
+              <a href="#" target="_blank" rel="noreferrer">Write-up</a>
+            </footer>
+          </article>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" role="tabpanel" aria-labelledby="Experience">
+        <h2>Experience</h2>
+        <ul class="list">
+          <li>
+            <strong>Role @ Organization</strong> — <em>Dates</em>
+            <div class="muted">1–2 line summary of what you did and the impact. Use numbers where you can.</div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" role="tabpanel" aria-labelledby="Skills">
+        <h2>Skills</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Mechanical</h3>
+            <p>CAD (Onshape/SolidWorks), FEA, GD&T, DFM, machining, 3D printing.</p>
+          </div>
+          <div class="card">
+            <h3>Robotics & Controls</h3>
+            <p>Arduino, microcontrollers, kinematics, control systems, sensors, actuator selection.</p>
+          </div>
+          <div class="card">
+            <h3>Software</h3>
+            <p>Python, MATLAB, C/C++, Git, basic web (HTML/CSS/JS).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CAD PORTFOLIO -->
+      <section id="cad-portfolio" role="tabpanel" aria-labelledby="CAD Portfolio">
+        <h2>CAD Portfolio</h2>
+        <p class="subtitle">A showcase of my designs and mechanical concepts.</p>
+        <div class="grid" id="cad-grid">
+          <!-- Example static image -->
+          <div class="card">
+            <img src="Gauge Block.png" alt="Gauge Block CAD" style="width:100%; border:1px solid var(--border);" />
+            <img src="CAM project.png" alt="CAM Project CAD" style="width:100%; border:1px solid var(--border);" />
+            <img src="railing.png" alt="Railing CAD" style="width:100%; border:1px solid var(--border);" />
+            <img src="capTop.png" alt="Cap CAD Top View" style="width:100%; border:1px solid var(--border);" />
+            <img src="capBottom.png" alt="Cap CAD Bottom View" style="width:100%; border:1px solid var(--border);" />
+            <p>A variety of models built for my ME357 CAD class. </p>
+            
+          </div>
+          <div class="card">
+            <img src="FEA.png" alt="Rocket Nozzle FEA" style="width:100%; border:1px solid var(--border);" />
+            <p>FEA simulation conducted on a rocket nozzle I designed with a team for BURPG, my school's rocketry team. </p>
+            
+          </div>
+          
+          <!-- Example MP4 animation grouped with image -->
+          <div class="card">
+            <div class="media-group" style="border:1px solid var(--border); padding: 4px;">
+              <img src="Ball Valve.png" alt="Ball Valve Image" style="width:100%;" />
+              <video autoplay loop muted playsinline style="width:100%; margin-top: 8px;">
+                <source src="BallValveExplode.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <p>Ball Valve Assembly, modeled, assembled, and animated.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" role="tabpanel" aria-labelledby="Contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:you@domain.com">you@domain.com</a></p>
+        <p>Prefer a quick intro? Paste this into your email:</p>
+        <pre>Subject: Quick intro — Matthew Nizich
+Hi Matthew, I found your portfolio and would love to connect about [topic].
+— Matthew Nizich, Mechanical Engineering Student</pre>
+      </section>
+    </main>
+
+    <footer class="site">
+      © <span id="year"></span> Matthew Nizich 
+    </footer>
   </div>
+
+  <script>
+    const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+    const panels = Array.from(document.querySelectorAll('section[role="tabpanel"]'));
+
+    function show(id) {
+      panels.forEach(p => p.classList.toggle('active', p.id === id));
+      tabButtons.forEach(b => {
+        const on = b.dataset.target === id;
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+    }
+
+    function initFromHash() {
+      const id = (location.hash || '#about').replace('#','');
+      if (panels.some(p => p.id === id)) show(id);
+    }
+
+    tabButtons.forEach(btn => btn.addEventListener('click', () => {
+      const id = btn.dataset.target; location.hash = id;
+    }));
+
+    window.addEventListener('hashchange', initFromHash);
+    initFromHash();
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
