@@ -184,15 +184,65 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
       </section>
 
       <!-- EXPERIENCE -->
-      <section id="experience" role="tabpanel" aria-labelledby="Experience">
-        <h2>Experience</h2>
-        <ul class="list">
-          <li>
-            <strong>Role @ Organization</strong> — <em>Dates</em>
-            <div class="muted">1–2 line summary of what you did and the impact. Use numbers where you can.</div>
-          </li>
-        </ul>
+      <section id="experience">
+        <h2>Work Experience</h2>
+        
+        <div class="experience-grid">
+          <!-- TISP Inspiration Ambassador -->
+          <div class="card">
+            <h3>Inspiration Ambassador – Technology & Innovation Scholars Program (TISP)</h3>
+            <p><strong>Boston University | 2023 – 2024</strong></p>
+            <p>Taught Onshape CAD, Arduino, and engineering concepts to high school students, inspiring interest in STEM through hands-on projects and mentoring.</p>
+          </div>
+      
+          <!-- Robotics Instructor -->
+          <div class="card">
+            <h3>Robotics & Electronics Instructor</h3>
+            <p><strong>Boston, MA | 2022 – 2024</strong></p>
+            <p>Instructed students in week-long robotics and electronics courses, fostering a fun learning environment while organizing paperwork to track student progress.</p>
+          </div>
+      
+          <!-- Makerspace Lab Advisor -->
+          <div class="card">
+            <h3>Makerspace Lab Advisor</h3>
+            <p><strong>Boston University | 2022 – Present</strong></p>
+            <p>Guided students in the safe and effective use of makerspace tools including 3D printers, laser cutters, and prototyping equipment; advised on design and fabrication best practices.</p>
+          </div>
+        </div>
       </section>
+      
+      <style>
+        #experience {
+          margin: 40px 0;
+        }
+      
+        #experience h2 {
+          margin-bottom: 20px;
+        }
+      
+        .experience-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 20px;
+        }
+      
+        .experience-grid .card {
+          background: #fff;
+          border: 1px solid var(--border, #ddd);
+          border-radius: 8px;
+          padding: 20px;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+      
+        .experience-grid .card h3 {
+          margin-top: 0;
+          margin-bottom: 10px;
+        }
+      
+        .experience-grid .card p {
+          margin: 5px 0;
+        }
+      </style>
 
       <!-- SKILLS -->
       <section id="skills" role="tabpanel" aria-labelledby="Skills">
