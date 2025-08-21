@@ -91,7 +91,7 @@
       border-radius: 0;
     }
 
-    .avatar { width: 120px; height: 120px; border-radius: 999px; border: 2px solid var(--border); object-fit: cover; cursor: pointer; }
+    .avatar { width: 120px; height: 120px; border-radius: 999px; border: 2px solid var(--border); object-fit: cover; }
     h1 { margin: 0; font-size: 28px; }
     .subtitle { color: var(--muted); margin-top: 6px; }
     .chip { display: inline-block; padding: 4px 10px; border-radius: 0; background: var(--content-bg); border: 1px solid var(--border); font-size: 12px; margin-right: 6px; }
@@ -119,37 +119,6 @@
       .hero { grid-template-columns: 1fr; text-align: center; }
       .avatar { margin: 0 auto; }
     }
-
-    /* Modal Styles */
-    .modal {
-      display: none; 
-      position: fixed; 
-      z-index: 1000; 
-      padding-top: 60px; 
-      left: 0; top: 0; width: 100%; height: 100%; 
-      overflow: auto; background-color: rgba(0,0,0,0.9);
-    }
-
-    .modal-content {
-      margin: auto; display: block;
-      max-width: 90%; max-height: 80vh;
-      animation: zoom 0.3s ease;
-    }
-
-    @keyframes zoom {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    .close {
-      position: absolute; top: 20px; right: 35px;
-      color: #fff; font-size: 40px; font-weight: bold; cursor: pointer;
-    }
-
-    #caption {
-      margin: auto; display: block; text-align: center; color: #ccc;
-      padding: 10px; max-width: 80%;
-    }
   </style>
 </head>
 <body>
@@ -172,13 +141,15 @@
       <!-- ABOUT -->
       <section id="about" role="tabpanel" class="active" aria-labelledby="About">
         <div class="hero">
-          <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" alt="Your headshot" class="avatar zoomable" />
+          <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" alt="Your headshot" class="avatar" />
           <div>
             <h1>Matthew Nizich</h1>
             <div class="subtitle">Bayside, NY · Boston, MA</div>
             <p>
 My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at Boston University. I’m passionate about robotics, mechanical systems, and hands-on design, with a strong interest in making agile and autonomous mechanical systems. Outside of academics, I’ve spent time mentoring and teaching students in robotics and electronics, leading week-long courses where I guide them through engineering principles using elements such as Arduino, truss designs, and CAD. In my spare time, I enjoy practicing Kendo and tinkering with my hobby builds and art pieces, which often lead me back to the lab I work at thanks to all the wonderful machinery available there. As a lab advisor in my university's makerspace, my workplace is where I have honed my skills with 3D printing, laser cutting, and a wide range of other machinery. I also spend time in the workshop as a member of the mechanical team for the Mars Rover Club, applying my mechanical and problem-solving skills to collaborative design challenges. Through these experiences and more, I continue to cultivate my engineering skills while exploring new ways to design, build, and innovate.
             </p>
+            <div>
+            </div>
             <p>
               <a href="https://www.linkedin.com/in/matthew-nizich-bu/" target="_blank" rel="noreferrer">LinkedIn</a> ·
               <a href="#contact">Email</a> ·
@@ -195,12 +166,12 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
         <div class="grid" id="project-grid">
           <article class="card">
             <h3>BU Mars Rover Club </h3>
-            <p>As a member of the Boston University Mars Rover Club (BUMRC), I have made contributions to the robotic arm and currently work on the chassis subteam...</p>
-            <img src="Robotic Arm.png" alt="Robotic Arm CAD" class="zoomable" style="width:100%; border:1px solid var(--border);" />
+            <p>As a member of the Boston University Mars Rover Club (BUMRC), I have made contributions to the robotic arm and currently work on the chassis subteam. My work focuses on designing, analyzing, and improving the rover’s structural frame to ensure durability, lightweight performance, and adaptability across rough terrain. I collaborate with teammates to integrate the chassis with other subsystems—including drive, arm, soil sampling, and electronics—while balancing manufacturability and material constraints. This experience has strengthened my skills in CAD modeling, mechanical analysis, and hands-on prototyping, as well as my ability to work within an interdisciplinary engineering team toward a competitive, real-world robotics project.  </p>
+            <img src="Robotic Arm.png" alt="Robotic Arm CAD" style="width:100%; border:1px solid var(--border);" />
             <p>CAD for the robotic arm.</p>
-            <img src="RoverLarge.jpg" alt="Big Rover work" class="zoomable" style="width:100%; border:1px solid var(--border);" />
+            <img src="RoverLarge.jpg" alt="Big Rover work" style="width:100%; border:1px solid var(--border);" />
             <p> Our current design for the competition.</p>
-            <img src="Rover.jpg" alt="Rover work" class="zoomable" style="width:100%; border:1px solid var(--border);" />
+            <img src="Rover.jpg" alt="Rover work" style="width:100%; border:1px solid var(--border);" />
             <div>
               <span class="chip">Fusion360</span>
               <span class="chip">Water Jet</span>
@@ -208,23 +179,197 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
               <span class="chip">Laser cutting</span>
             </div>
           </article>
-          <!-- Other projects... -->
+          <article class="card">
+            <h3>Automatic Pill Cutter </h3>
+            <p>For my Engineering Design class, I collaborated with three classmates to design a device that could automatically split medicine tablets in half, improving accessibility for the elderly or individuals that might struggle with the strength required of traditional pill cutters. This class taught me much about designing and constructing physical mechanisms, but also gave me valuable insights into workflow tools and processes I might use in industry. I designed the housing for our device in Onshape, and used 3D printing, lasercutting, and CNC milling to produce the final casing, slicing mechanism, and all other subsystems. </p>
+            <img src="Gantt Chart.png" alt="EK 210" style="width:100%; border:1px solid var(--border);" />
+            <p>Gantt chart used to organize workflow within my group.</p>
+            <img src="Pill Cutter.jpg" alt="Casing" style="width:100%; border:1px solid var(--border);" />
+            <p>Prototype design for the device.</p>
+            <div>
+              <span class="chip">Onshape</span>
+              <span class="chip">CNC Mill</span>
+              <span class="chip">Soldering</span>
+              <span class="chip">Organization</span>
+            </div>
+          </article>
+           <article class="card">
+            <h3>Digital Temperature Sensor </h3>
+            <p>I designed and built a digital temperature sensor using an Arduino microcontroller, programmed to display temperature readings on an LCD and trigger a buzzer when the temperature exceeded programmable limits. I handled all aspects of the project, including wiring the electronic components, using Onshape to design and 3D print a custom enclosure, as well as integrating the hardware with the software. This project strengthened my skills in embedded programming, electronics, and rapid prototyping, while giving me hands-on experience combining mechanical design with circuit and code integration.</p>
+            <img src="Temperature Sensor Wiring.jpg" alt="EK 131" style="width:100%; border:1px solid var(--border);" />
+            <img src="Temperature Sensor.jpg" alt="Outside Sensor" style="width:100%; border:1px solid var(--border);" />
+            <div>
+              <span class="chip">Onshape</span>
+              <span class="chip">Laser cutting</span>
+              <span class="chip">Arduino</span>
+              <span class="chip">Circuitry</span>
+            </div>
+          </article>
         </div>
+          <article class="card">
+            <h3>Automatic Pill Cutter </h3>
+            <p>For my Engineering Design class, I collaborated with three classmates to design a device that could automatically split medicine tablets in half, improving accessibility for the elderly or individuals that might struggle with the strength required of traditional pill cutters. This class taught me much about designing and constructing physical mechanisms, but also gave me valuable insights into workflow tools and processes I might use in industry. I designed the housing for our device in Onshape, and used 3D printing, lasercutting, and CNC milling to produce the final casing, slicing mechanism, and all other subsystems. </p>
+            <img src="Gantt Chart.png" alt="EK 210" style="width:100%; border:1px solid var(--border);" />
+            <p>Gantt chart used to organize workflow within my group.</p>
+            <img src="Pill Cutter.jpg" alt="Casing" style="width:100%; border:1px solid var(--border);" />
+            <p>Prototype design for the device.</p>
+            <div>
+              <span class="chip">Onshape</span>
+              <span class="chip">CNC Mill</span>
+              <span class="chip">Soldering</span>
+              <span class="chip">Organization</span>
+            </div>
+          </article>
+           <article class="card">
+            <h3>FRC Team 3419 </h3>
+            <p>In high school, I was a member of my school’s FIRST Robotics Competition (FRC) team, where I contributed to both design and fabrication. I used AutoCAD to create mechanical components and collaborated within a large, interdisciplinary team to turn designs into a working robot. On the manufacturing side, I gained hands-on experience with a variety of shop tools and processes such as CNC machining, tapping, and die work, helping ensure precise and reliable parts for assembly. In addition, I served as the team’s driver during competitions, which required quick decision-making, communication, and strategic coordination under pressure. This experience strengthened my skills in CAD, machining, and teamwork while exposing me to the full engineering cycle from concept to competition. </p>
+            <img src="working.jpg" alt="teamwork" style="width:100%; border:1px solid var(--border);" />
+            <img src="swerve.jpg" alt="swerve" style="width:100%; border:1px solid var(--border);" />
+            <img src="Team3419.png" alt="FRC" style="width:100%; border:1px solid var(--border);" />
+            <div>
+              <span class="chip">Onshape</span>
+              <span class="chip">Laser cutting</span>
+              <span class="chip">Arduino</span>
+              <span class="chip">C++</span>
+            </div>
+          </article>
       </section>
 
       <!-- EXPERIENCE -->
-      <!-- ... same as before ... -->
+      
+      <section id="experience" role="tabpanel" aria-labelledby="Experience">
+        <h2>Experience</h2>
+        <ul class="list">
+          <li>
+            <article>
+              <h3>Inspiration Ambassador — Technology &amp; Innovation Scholars Program (TISP)</h3>
+              <p><em>Boston University | Summer 2025</em></p>
+              <p>As an Inspiration Ambassador for BU’s Technology &amp; Innovation Scholars Program, I worked closely with high school students to foster early interest in STEM fields.</p>
+              <ul>
+                <li>Designed and delivered hands-on lessons in Onshape CAD, Arduino programming, and core engineering concepts, adapting content to different skill levels.</li>
+                <li>Mentored students through multi-day design projects, encouraging creative problem-solving and collaboration.</li>
+                <li>Facilitated a welcoming classroom environment that balanced technical rigor with engagement and accessibility, sparking student curiosity about engineering.</li>
+                <li>Coordinated with program staff to refine lesson plans and ensure smooth operation of workshops.</li>
+                <li>Connected college-level engineering practices to high school learning to strengthen outreach impact.</li>
+              </ul>
+            </article>
+          
+            <hr />
+          
+            <article>
+              <h3>iD Tech Robotics Instructor</h3>
+              <p><em>Boston, MA | Summer 2024</em></p>
+              <p>Led week-long immersive courses in robotics, coding, and electronics for middle and high school students.</p>
+              <ul>
+                <li>Delivered structured instruction on Arduino, circuit design, and robotics fundamentals tailored to different age groups and experience levels.</li>
+                <li>Promoted project-based learning, guiding students from concept to programmed and presented final builds.</li>
+                <li>Maintained a fun, collaborative, and safe learning environment with proper tool usage.</li>
+                <li>Prepared materials, tracked student progress, and submitted reports to program coordinators.</li>
+                <li>Balanced roles of technical instructor and mentor to build confidence and curiosity.</li>
+              </ul>
+            </article>
+          
+            <hr />
+          
+            <article>
+              <h3>Singh Imagineering Lab Advisor</h3>
+              <p><em>Boston University | 2024 – Present</em></p>
+              <p>Support BU students in turning design ideas into reality by guiding them through prototyping and fabrication.</p>
+              <ul>
+                <li>Trained students on safe and effective use of makerspace equipment: 3D printers, laser cutters, soldering tools, and prototyping machinery.</li>
+                <li>Provided one-on-one advising on design for manufacture, material selection, and bridging CAD to physical builds.</li>
+                <li>Assisted teams with prototypes for coursework, clubs, and competitions while ensuring precision and safety.</li>
+                <li>Monitored machine health, troubleshot issues, and maintained consistent equipment uptime.</li>
+                <li>Fostered an iterative, optimization-focused engineering mindset in the lab.</li>
+              </ul>
+            </article>
+          
+            <hr />
+          
+            <article>
+              <h3>Production Assistant — Brooklyn Robot Foundry</h3>
+              <p><em>Brooklyn, NY | Summer 2023</em></p>
+              <p>Contributed to the assembly and delivery of educational robotics kits and supported daily production operations.</p>
+              <ul>
+                <li>Assembled and tested robotics kits to ensure quality and consistency of components.</li>
+                <li>Maintained accurate inventory records for electronics, motors, and mechanical parts to streamline production.</li>
+                <li>Operated machine shop tools for small-part fabrication and rapid prototyping.</li>
+                <li>Collaborated with instructors and staff to meet distribution timelines for workshops and summer programs.</li>
+                <li>Balanced manufacturing speed with product reliability in an educational context.</li>
+              </ul>
+            </article>
+          </li>
+        </ul>
+      </section>
 
       <!-- EDUCATION -->
-      <!-- ... same as before ... -->
+      <section id="Education" role="tabpanel" aria-labelledby="Education">
+        <h2>Education</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Boston University College of Engineering</h3>
+            <p>Current GPA: 3.73, Dean's List</p>
+            <h4>Fall 2025</h4>
+            <p>Fluid Mechanics <br>Introduction to Robotics <br>Energy and Thermodynamics<br>Manufacturing Processes <br>Mechanics of Materials</p>
+            <h4>Spring 2025</h4>
+            <p>Differential Equations<br> Engineering Mechanics(Statics)<br> Probability, Statistics, and Data Science for Engineers<br> CAD and Machine Components<br> Introduction to Religion</p>
+            <h4>Fall 2024</h4>
+            <p>Multivariable Calculus<br> Physics 2<br> Introduction to Engineering Design<br> Electric Circuits<br> Early Chinese History</p>
+            <h4>Spring 2023</h4>
+            <p>Calculus 2<br> Physics 1<br> Computational Linear Algebra<br> Hands-on Engineering<br> Writing/Research Inquiry </p>
+            <h4>Fall 2023</h4>
+            <p>Calculus 1<br> Introduction to Programming<br> Programming for Engineers<br> General Chemistry<br> First-Year Writing Seminar</p>
+            <h3>Hunter College High School</h3>
+            <p>GPA: 3.7 unweighted</p>
+          </div>
+        </div>
+      </section>
 
       <!-- CAD PORTFOLIO -->
-      <!-- ... same as before ... -->
+      <section id="cad-portfolio" role="tabpanel" aria-labelledby="CAD Portfolio">
+        <h2>CAD Portfolio</h2>
+        <p class="subtitle">A showcase of my CAD designs and projects made in SolidWorks.</p>
+        <div class="grid" id="cad-grid">
+          <!-- ME357 class -->
+          <div class="card">
+            <img src="Gauge Block.png" alt="Gauge Block CAD" style="width:100%; border:1px solid var(--border);" />
+            <img src="CAM project.png" alt="CAM Project CAD" style="width:100%; border:1px solid var(--border);" />
+            <img src="railing.png" alt="Railing CAD" style="width:100%; border:1px solid var(--border);" />
+            <img src="capTop.png" alt="Cap CAD Top View" style="width:100%; border:1px solid var(--border);" />
+            <p>A selection of models built for my ME357 CAD class. </p>
+          </div>
+
+          <!-- Anvil project -->
+          <div class="card">
+            <div class="media-group" style="border:1px solid var(--border); padding: 4px;">
+              <img src="Anvil.png" alt="Anvil CAD" style="width:100%;" />
+              <video autoplay loop muted playsinline style="width:100%; margin-top: 8px;">
+                <source src="Blacksmith.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <p>4-bar linkage designed to mimic a hammer striking an anvil.</p>
+          </div>
+
+          <!-- Rocket nozzle & Ball Valve -->
+          <div class="card">
+            <img src="FEA.png" alt="Rocket Nozzle FEA" style="width:100%; border:1px solid var(--border);" />
+            <p>FEA simulation conducted on a rocket nozzle I designed with a team for BURPG, my school's rocketry team. </p>
+            <img src="Ball Valve.png" alt="Ball Valve Image" style="width:100%;" />
+            <video autoplay loop muted playsinline style="width:100%; margin-top: 8px;">
+              <source src="BallValveExplode.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <p>Ball Valve Assembly, modeled, assembled, and animated.</p>
+          </div>
+
+        </div>
+      </section>
 
       <!-- CONTACT -->
       <section id="contact" role="tabpanel" aria-labelledby="Contact">
         <h2>Contact</h2>
-        <p>Feel free to reach out to me at <a href="mailto:mnizich01@gmail.com">mnizich01@gmail.com</a></p>
+        <p>Feel free to reach out to me at <a href="mailto:you@domain.com">mnizich01@gmail.com</a></p>
         <p>Prefer a quick intro? Paste this into your email:</p>
         <pre>Subject: Quick intro — Matthew Nizich
 Hi Matthew, I found your portfolio and would love to connect about [topic].
@@ -235,13 +380,6 @@ Hi Matthew, I found your portfolio and would love to connect about [topic].
     <footer class="site">
       © <span id="year"></span> Matthew Nizich 
     </footer>
-  </div>
-
-  <!-- Image Modal -->
-  <div id="imgModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="imgModalContent">
-    <div id="caption"></div>
   </div>
 
   <script>
@@ -269,26 +407,6 @@ Hi Matthew, I found your portfolio and would love to connect about [topic].
     initFromHash();
 
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Image Modal functionality
-    const modal = document.getElementById("imgModal");
-    const modalImg = document.getElementById("imgModalContent");
-    const captionText = document.getElementById("caption");
-    const closeBtn = document.querySelector(".modal .close");
-
-    document.querySelectorAll("img.zoomable").forEach(img => {
-      img.style.cursor = "zoom-in";
-      img.addEventListener("click", () => {
-        modal.style.display = "block";
-        modalImg.src = img.src;
-        captionText.textContent = img.alt;
-      });
-    });
-
-    closeBtn.onclick = () => { modal.style.display = "none"; };
-    modal.onclick = (e) => {
-      if (e.target === modal) modal.style.display = "none";
-    };
   </script>
 </body>
 </html>
