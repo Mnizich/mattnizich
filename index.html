@@ -227,7 +227,7 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
             <p>Gantt chart used to organize workflow within my group.</p>
             <img src="Pill Cutter.jpg" alt="" style="width:100%; border:1px solid var(--border);" />
             <p>Prototype design for the device.</p>
-            <video autoplay loop muted playsinline style="width:100%; margin-top: 8px;">
+            <video autoplay loop muted playsinline style="width:100%; margin-top: 8px;" data-caption="Video of the hopper mechanism in action. I would include a video of the cutter as well, however when working on this project I did not have the foresight to fully document every system.">
                 <source src="IMG_1093.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
@@ -469,7 +469,8 @@ Hi Matthew, I found your portfolio and would love to connect about [topic].
       modalImg.style.display = "none";
       modalVideo.style.display = "block";
       modalVideo.src = video.querySelector("source").src;
-      captionText.innerHTML = video.getAttribute("alt") || "Video preview";
+        captionText.innerHTML = video.dataset.caption || "Video preview";
+
     });
   });
   
