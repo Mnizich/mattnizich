@@ -155,6 +155,11 @@
   cursor: pointer;
 }
 .close:hover { color: #bbb; }
+    #videoModalContent {
+      display: none;
+      max-width: 90%;
+      max-height: 80%;
+    }
 
   </style>
 </head>
@@ -222,6 +227,10 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
             <p>Gantt chart used to organize workflow within my group.</p>
             <img src="Pill Cutter.jpg" alt="" style="width:100%; border:1px solid var(--border);" />
             <p>Prototype design for the device.</p>
+            <video autoplay loop muted playsinline style="width:100%; margin-top: 8px;">
+                <source src="IMG_1093.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
             <div>
               <span class="chip">Onshape</span>
               <span class="chip">CNC Mill</span>
@@ -407,6 +416,7 @@ Hi Matthew, I found your portfolio and would love to connect about [topic].
 <div id="imgModal" class="modal">
   <span class="close">&times;</span>
   <img class="modal-content" id="imgModalContent">
+  <video class="modal-content" id="videoModalContent" controls></video>
   <div id="caption"></div>
   <script>
     const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
@@ -438,25 +448,46 @@ Hi Matthew, I found your portfolio and would love to connect about [topic].
   <script>
     const modal = document.getElementById("imgModal");
     const modalImg = document.getElementById("imgModalContent");
+    const modalVideo = document.getElementById("videoModalContent");
     const captionText = document.getElementById("caption");
     const span = document.getElementsByClassName("close")[0];
-  
-    // Make only project and CAD images clickable
-    document.querySelectorAll("#projects img, #cad-portfolio img").forEach(img => {
-      img.addEventListener("click", () => {
-        modal.style.display = "block";
-        modalImg.src = img.src;
-        captionText.innerHTML = img.alt;
-      });
+  // Handle images
+  document.querySelectorAll("#projects img, #cad-portfolio img").forEach(img => {
+    img.addEventListener("click", () => {
+      modal.style.display = "block";
+      modalImg.style.display = "block";
+      modalVideo.style.display = "none";
+      modalImg.src = img.src;
+      captionText.innerHTML = img.alt;
     });
+  });
   
-    // Close modal on X
-    span.onclick = () => modal.style.display = "none";
+  // Handle videos
+  document.querySelectorAll("#projects video, #cad-portfolio video").forEach(video => {
+    video.addEventListener("click", () => {
+      modal.style.display = "block";
+      modalImg.style.display = "none";
+      modalVideo.style.display = "block";
+      modalVideo.src = video.querySelector("source").src;
+      captionText.innerHTML = video.getAttribute("alt") || "Video preview";
+    });
+  });
   
-    // Close when clicking outside the image
-    modal.onclick = (e) => {
-      if (e.target === modal) modal.style.display = "none";
-    };
+  // Close modal on X
+  span.onclick = () => {
+    modal.style.display = "none";
+    modalVideo.pause();
+    modalVideo.src = "";
+  };
+  
+  // Close when clicking outside content
+  modal.onclick = (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+      modalVideo.pause();
+      modalVideo.src = "";
+    }
+  };
   </script>
 
 </div>
