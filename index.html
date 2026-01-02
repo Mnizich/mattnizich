@@ -96,38 +96,44 @@
     .subtitle { color: var(--muted); margin-top: 6px; }
     .chip { display: inline-block; padding: 4px 10px; border-radius: 0; background: var(--content-bg); border: 1px solid var(--border); font-size: 12px; margin-right: 6px; }
 
+    /* Layout for Projects & Education */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .card { border: 1px solid var(--border); background: var(--content-bg); border-radius: 0; padding: 16px; margin-bottom: 16px; }
+    .card h3 { margin-top: 0; margin-bottom: 6px; }
     
-    /* CAD PORTFOLIO SPECIFIC STYLES - DOCUMENT FLOW */
-    .cad-stack {
+    /* NEW CAD PORTFOLIO LAYOUT (Document Flow + Small Gallery) */
+    .cad-section-container {
       display: flex;
       flex-direction: column;
-      gap: 40px;
-      margin-top: 20px;
-    }
-    .cad-item {
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 30px;
-    }
-    .cad-item img, .cad-item video {
-      max-width: 100%;
-      height: auto;
-      border: 1px solid var(--border);
-      display: block;
-      margin-bottom: 15px;
-    }
-    .cad-item p {
-      margin: 10px 0;
-      color: var(--fg);
-    }
-    .cad-item:last-child {
-      border-bottom: none;
+      gap: 30px; /* Space between project groups */
     }
 
-    .card { border: 1px solid var(--border); background: var(--content-bg); border-radius: 0; padding: 16px; }
-    .card h3 { margin-top: 0; margin-bottom: 6px; }
-    .card p { margin-top: 6px; }
-    .card footer { margin-top: 12px; font-size: 14px; }
+    .cad-project-group {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+
+    .cad-gallery {
+      display: flex;
+      flex-wrap: wrap; /* Allows wrapping like a document */
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .cad-gallery img, .cad-gallery video {
+      width: calc(25% - 10px); /* Fits roughly 4 per row */
+      min-width: 150px; /* Keeps them from getting too tiny on mobile */
+      height: 150px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .cad-caption {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 5px;
+    }
 
     .list { list-style: none; padding: 0; margin: 0; }
     .list li { padding: 12px 0; border-bottom: 1px dashed var(--border); }
@@ -142,33 +148,24 @@
       margin-top: auto;
     }
 
-    /* Modals */
+    /* Modal Styles */
     .modal {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      padding-top: 80px;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      overflow: auto;
+      display: none; position: fixed; z-index: 9999; padding-top: 80px;
+      left: 0; top: 0; width: 100%; height: 100%; overflow: auto;
       background-color: rgba(0,0,0,0.9);
     }
     .modal-content {
-      margin: auto;
-      display: block;
-      max-width: 90%;
-      max-height: 80%;
-      border-radius: 4px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.6);
+      margin: auto; display: block; max-width: 90%; max-height: 80%;
+      border-radius: 4px; box-shadow: 0 0 12px rgba(0,0,0,0.6);
     }
     #caption { margin: 12px auto; text-align: center; color: #f1f1f1; font-size: 16px; }
     .close { position: absolute; top: 30px; right: 40px; color: #f1f1f1; font-size: 36px; font-weight: bold; cursor: pointer; }
-    .close:hover { color: #bbb; }
     #videoModalContent { display: none; max-width: 90%; max-height: 80%; }
 
     @media (max-width: 600px) {
       .hero { grid-template-columns: 1fr; text-align: center; }
       .avatar { margin: 0 auto; }
+      .cad-gallery img, .cad-gallery video { width: calc(50% - 10px); } /* 2 per row on mobile */
     }
   </style>
 </head>
@@ -190,12 +187,12 @@
     <main>
       <section id="about" role="tabpanel" class="active" aria-labelledby="About">
         <div class="hero">
-          <img src="head.jpg" alt="Matthew Nizich" class="avatar" />
+          <img src="head.jpg" alt="That's me!" class="avatar" />
           <div>
             <h1>Matthew Nizich</h1>
             <div class="subtitle">Bayside, NY · Boston, MA</div>
             <p>
-              My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at Boston University. I’m passionate about robotics, mechanical systems, and hands-on design...
+              My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at Boston University. I’m passionate about robotics, mechanical systems, and hands-on design, with a strong interest in making agile and autonomous mechanical systems. Outside of academics, I’ve spent time mentoring and teaching students in robotics and electronics, leading week-long courses where I guide them through engineering principles using elements such as Arduino, truss designs, and CAD. In my spare time, I enjoy practicing Kendo and tinkering with my hobby builds and art pieces, which often lead me back to the lab I work at thanks to all the wonderful machinery available there. As a lab advisor in my university's makerspace, my workplace is where I have honed my skills with 3D printing, laser cutting, and a wide range of other machinery. I also spend time in the workshop as a member of the mechanical team for the Mars Rover Club, applying my mechanical and problem-solving skills to collaborative design challenges. Through these experiences and more, I continue to cultivate my engineering skills while exploring new ways to design, build, and innovate.
             </p>
             <p><a href="Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></p>
           </div>
@@ -204,27 +201,28 @@
 
       <section id="projects" role="tabpanel" aria-labelledby="Projects">
         <h2>Projects</h2>
-        <div class="grid" id="project-grid">
+        <div class="grid">
           <article class="card">
             <h3>BU Mars Rover Club</h3>
-            <p>Designing and analyzing the rover’s structural frame for durability and lightweight performance.</p>
-            <img src="Robotic Arm.png" alt="CAD for the robotic arm." style="width:100%;">
-            <img src="RoverLarge.jpg" alt="Previous robotic arm design." style="width:100%;">
-            <img src="Rover.jpg" alt="Current design for competition." style="width:100%;">
-            <div>
-              <span class="chip">Fusion360</span> <span class="chip">Water Jet</span>
+            <p>As a member of the Boston University Mars Rover Club (BUMRC), I have made contributions to the robotic arm and currently work on the chassis subteam. My work focuses on designing, analyzing, and improving the rover’s structural frame to ensure durability, lightweight performance, and adaptability across rough terrain.</p>
+            <img src="Robotic Arm.png" alt="Robotic Arm CAD" style="width:100%; border:1px solid var(--border);" />
+            <img src="RoverLarge.jpg" alt="Rover Previous" style="width:100%; border:1px solid var(--border); margin-top:5px;" />
+            <img src="Rover.jpg" alt="Current Design" style="width:100%; border:1px solid var(--border); margin-top:5px;" />
+            <div style="margin-top:10px;">
+              <span class="chip">Fusion360</span><span class="chip">Water Jet</span><span class="chip">CNC Mill</span>
             </div>
           </article>
+
           <article class="card">
             <h3>Automatic Pill Cutter</h3>
-            <p>Collaborated on a device to automatically split medicine tablets for improved accessibility.</p>
-            <img src="Gantt Chart.png" alt="Project workflow." style="width:100%;">
-            <img src="Pill Cutter.jpg" alt="Prototype design." style="width:100%;">
-            <video autoplay loop muted playsinline style="width:100%;">
+            <p>For my Engineering Design class, I collaborated with three classmates to design a device that could automatically split medicine tablets in half. I designed the housing in Onshape and used 3D printing, lasercutting, and CNC milling.</p>
+            <img src="Gantt Chart.png" alt="Gantt Chart" style="width:100%; border:1px solid var(--border);" />
+            <img src="Pill Cutter.jpg" alt="Pill Cutter Prototype" style="width:100%; border:1px solid var(--border); margin-top:5px;" />
+            <video autoplay loop muted playsinline style="width:100%; margin-top: 5px;">
                 <source src="IMG_1093.mp4" type="video/mp4">
             </video>
-            <div>
-              <span class="chip">Onshape</span> <span class="chip">CNC Mill</span>
+            <div style="margin-top:10px;">
+              <span class="chip">Onshape</span><span class="chip">CNC Mill</span><span class="chip">Soldering</span>
             </div>
           </article>
         </div>
@@ -235,9 +233,34 @@
         <ul class="list">
           <li>
             <article>
+              <h3>Inspiration Ambassador — Technology &amp; Innovation Scholars Program (TISP)</h3>
+              <p><em>Boston University | Summer 2025</em></p>
+              <ul>
+                <li>Designed and delivered hands-on lessons in Onshape CAD and Arduino.</li>
+                <li>Mentored students through multi-day design projects.</li>
+              </ul>
+            </article>
+            <article>
               <h3>Singh Imagineering Lab Advisor</h3>
               <p><em>Boston University | 2024 – Present</em></p>
-              <p>Support BU students in turning design ideas into reality by guiding them through prototyping and fabrication.</p>
+              <ul>
+                <li>Trained students on 3D printers, laser cutters, and soldering tools.</li>
+                <li>Provided one-on-one advising on design for manufacture.</li>
+              </ul>
+            </article>
+            <article>
+              <h3>iD Tech Robotics Instructor</h3>
+              <p><em>Boston, MA | Summer 2024</em></p>
+              <ul>
+                <li>Led immersive courses in robotics and electronics for middle/high schoolers.</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Production Assistant — Brooklyn Robot Foundry</h3>
+              <p><em>Brooklyn, NY | Summer 2023</em></p>
+              <ul>
+                <li>Assembled robotics kits and operated machine shop tools.</li>
+              </ul>
             </article>
           </li>
         </ul>
@@ -249,7 +272,12 @@
           <div class="card">
             <h3>Boston University College of Engineering</h3>
             <p>Current GPA: 3.73, Dean's List</p>
-            <p>Focus: Fluid Mechanics, Robotics, Manufacturing Processes.</p>
+            <p><strong>Fall 2025:</strong> Fluid Mechanics, Robotics, Thermo, Manufacturing.</p>
+            <p><strong>Spring 2025:</strong> Diff Eq, Statics, Prob & Stats, CAD.</p>
+          </div>
+          <div class="card">
+            <h3>Hunter College High School</h3>
+            <p>GPA: 3.7 unweighted</p>
           </div>
         </div>
       </section>
@@ -258,36 +286,40 @@
         <h2>CAD Portfolio</h2>
         <p class="subtitle">A showcase of some of my CAD designs and projects made in SolidWorks.</p>
         
-        <div class="cad-stack">
+        <div class="cad-section-container">
           
-          <div class="cad-item">
-            <img src="Gauge Block.png" alt="Gauge Block">
-            <img src="CAM project.png" alt="CAM Project">
-            <img src="railing.png" alt="Railing Design">
-            <img src="capTop.png" alt="Cap Top Design">
-            <p>A selection of models built for my ME357 CAD class. These demonstrate fundamental modeling techniques and precision assembly.</p>
+          <div class="cad-project-group">
+            <div class="cad-gallery">
+              <img src="Gauge Block.png" alt="Gauge Block">
+              <img src="CAM project.png" alt="CAM project">
+              <img src="railing.png" alt="Railing">
+              <img src="capTop.png" alt="capTop">
+            </div>
+            <p class="cad-caption">A selection of models built for my ME357 CAD class.</p>
           </div>
 
-          <div class="cad-item">
-            <img src="Anvil.png" alt="Anvil Model">
-            <video autoplay loop muted playsinline>
-              <source src="Blacksmith.mp4" type="video/mp4">
-            </video>
-            <p><strong>4-Bar Linkage:</strong> Designed to mimic a hammer striking an anvil. This project focused on motion study and mechanical constraints.</p>
+          <div class="cad-project-group">
+            <div class="cad-gallery">
+              <img src="Anvil.png" alt="Anvil Model">
+              <video autoplay loop muted playsinline>
+                <source src="Blacksmith.mp4" type="video/mp4">
+              </video>
+            </div>
+            <p class="cad-caption">4-bar linkage designed to mimic a hammer striking an anvil.</p>
           </div>
 
-          <div class="cad-item">
-            <img src="FEA.png" alt="FEA analysis on rocket nozzle">
-            <p><strong>FEA Simulation:</strong> Conducted on a rocket nozzle I designed with a team for BURPG, my school's rocketry team.</p>
-            
-            <img src="Ball Valve.png" alt="Ball Valve Model">
-            <video autoplay loop muted playsinline>
-              <source src="BallValveExplode.mp4" type="video/mp4">
-            </video>
-            <p><strong>Ball Valve Assembly:</strong> Modeled, assembled, and animated with exploded views to show internal mechanical interactions.</p>
+          <div class="cad-project-group">
+            <div class="cad-gallery">
+              <img src="FEA.png" alt="FEA analysis">
+              <img src="Ball Valve.png" alt="Ball Valve">
+              <video autoplay loop muted playsinline>
+                <source src="BallValveExplode.mp4" type="video/mp4">
+              </video>
+            </div>
+            <p class="cad-caption">FEA simulation on rocket nozzle and Ball Valve Assembly animations.</p>
           </div>
 
-          </div>
+        </div>
       </section>
     </main>
 
@@ -304,15 +336,13 @@
   </div>
 
   <script>
-    // Tab Navigation Logic
     const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
     const panels = Array.from(document.querySelectorAll('section[role="tabpanel"]'));
 
     function show(id) {
       panels.forEach(p => p.classList.toggle('active', p.id === id));
       tabButtons.forEach(b => {
-        const on = b.dataset.target === id;
-        b.setAttribute('aria-selected', on ? 'true' : 'false');
+        b.setAttribute('aria-selected', b.dataset.target === id ? 'true' : 'false');
       });
     }
 
@@ -322,51 +352,38 @@
     }
 
     tabButtons.forEach(btn => btn.addEventListener('click', () => {
-      const id = btn.dataset.target; location.hash = id;
+      location.hash = btn.dataset.target;
     }));
 
     window.addEventListener('hashchange', initFromHash);
     initFromHash();
-
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Modal Logic
     const modal = document.getElementById("imgModal");
     const modalImg = document.getElementById("imgModalContent");
     const modalVideo = document.getElementById("videoModalContent");
     const captionText = document.getElementById("caption");
-    const span = document.getElementsByClassName("close")[0];
 
-    document.querySelectorAll("main img").forEach(img => {
-      img.addEventListener("click", () => {
+    document.querySelectorAll("img, video").forEach(el => {
+      el.addEventListener("click", function() {
+        if(this.closest('header') || this.classList.contains('avatar')) return;
         modal.style.display = "block";
-        modalImg.style.display = "block";
-        modalVideo.style.display = "none";
-        modalImg.src = img.src;
-        captionText.innerHTML = img.alt;
+        if (this.tagName === 'VIDEO') {
+          modalImg.style.display = "none";
+          modalVideo.style.display = "block";
+          modalVideo.src = this.querySelector('source').src;
+        } else {
+          modalVideo.style.display = "none";
+          modalImg.style.display = "block";
+          modalImg.src = this.src;
+        }
+        captionText.innerHTML = this.alt || "CAD Preview";
       });
     });
-  
-    document.querySelectorAll("main video").forEach(video => {
-      video.addEventListener("click", () => {
-        modal.style.display = "block";
-        modalImg.style.display = "none";
-        modalVideo.style.display = "block";
-        modalVideo.src = video.querySelector("source").src;
-        captionText.innerHTML = video.dataset.caption || "Video preview";
-      });
-    });
-  
-    span.onclick = () => {
+
+    document.querySelector(".close").onclick = () => {
       modal.style.display = "none";
       modalVideo.pause();
-    };
-  
-    modal.onclick = (e) => {
-      if (e.target === modal) {
-        modal.style.display = "none";
-        modalVideo.pause();
-      }
     };
   </script>
 </body>
