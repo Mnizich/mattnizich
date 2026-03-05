@@ -428,9 +428,7 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
 <section id="ME-360" role="tabpanel" aria-labelledby="ME 360">
   <h2>ME 360 – Electromechanical Design</h2>
   <p>
-    This section documents my work in ME 360, where I studied planar mechanisms,
-    mobility analysis, and motion synthesis. The course moved beyond simply
-    assembling CAD parts and instead focused on understanding why mechanisms move.
+    This section documents all of my work in the class ME360: Electromechanical Design. We began with projects on 4-Bar Linkages, degrees of freedom, and Arduino programming.
   </p>
 
   <div class="card" style="margin-top: 24px;">
@@ -440,9 +438,9 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
     <h4>Understanding Structure vs. Mechanism</h4>
     <p>
       The first major conceptual shift in this course was distinguishing between
-      a structure and a mechanism. A structure has zero mobility; it is designed
-      to resist motion. A mechanism has controlled mobility; it is designed to
-      produce motion. This distinction forced me to stop thinking of assemblies
+      a structure and a mechanism. A structure has zero mobility, as it is designed
+      to resist motion while a mechanism  is designed to produce motion. And therefore can move in a limited manner.
+      This distinction forced me to stop thinking of assemblies
       as collections of parts and instead analyze them in terms of degrees of freedom.
     </p>
     <img src="MechVStruc.png" alt="Mechanim vs. Structure Diagram" style="width:100%; border:1px solid var(--border);" />
@@ -483,8 +481,8 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
     <h4>Constraint Strategy in SolidWorks</h4>
     <p>
       Each joint was modeled using concentric and hinge mates to replicate ideal
-      planar revolute joints. I deliberately avoided redundant constraints that
-      would artificially stiffen the mechanism. The assembly was verified to
+      revolute joints. I deliberately avoided redundant constraints that
+      would artificially stiffen the mechanism, which I verified would
       rotate freely with a single crank input before applying any motion drivers.
     </p>
 
@@ -521,8 +519,8 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
     <p>
       The torque peak occurs near a mechanically disadvantaged configuration,
       where the transmission angle reduces effective mechanical advantage.
-      This demonstrated how geometric synthesis directly affects force
-      requirements and actuator sizing.
+      This demonstrated how the model's geometry directly affects force
+      and motor requirements.
     </p>
           <video autoplay loop muted playsinline style="width:100%; margin-top:18px; border:1px solid var(--border);">
           <source src="4BarV3.mp4" type="video/mp4"> Your browser does not support the video tag. 
@@ -533,10 +531,9 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
     </p>
     <ul style="padding-left:18px;">
       <li>Differentiate between structural assemblies and true mechanisms</li>
-      <li>Perform analytical DOF verification using Grübler’s criterion</li>
+      <li>Perform analytical DOF verification using Grübler Count</li>
       <li>Apply two-position synthesis to control motion paths</li>
       <li>Validate theoretical mobility with CAD constraints</li>
-      <li>Interpret torque and reaction force data for actuator selection</li>
     </ul>
   <section style="margin-top:60px;">
   <h3>Motor Speed Control – Dynamic Stability Platform</h3>
