@@ -592,7 +592,7 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
   </div>
 </section>
      <!-- Prototype Section -->
-  <section id="Testing" role="tabpanel">
+  <section id="Testing" role="tabpanel" aria-labelledby="Testing">
     <h2>Projects</h2>
     <p>Click a project to see the full design process and technical journey.</p>
   
@@ -613,7 +613,7 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
           Gantt Chart to ensure we met competition deadlines and manufacturing milestones.
         </p>
   
-        <img src="Gantt Chart.png" class="journey-inline-img">
+        <img src="Gantt Chart.png" class="journey-inline-img" alt="Gantt Chart">
   
         <p>
           After the planning phase, we moved into FEA analysis to identify high-stress
@@ -621,7 +621,7 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
           side plates and reinforce critical joints.
         </p>
   
-        <img src="RoverLarge.jpg" class="journey-inline-img">
+        <img src="RoverLarge.jpg" class="journey-inline-img" alt="Rover FEA">
   
         <p>
           The final assembly reduced total chassis mass by 15% compared to the previous
@@ -739,7 +739,7 @@ document.querySelectorAll(".project-panel").forEach(panel => {
 });
 
     // 2. Handle standard images (Projects/CAD)
-    document.querySelectorAll("main img:not(.avatar):not(.project-panel img)").forEach(img => {
+    document.querySelectorAll("main img:not(.avatar)")
       img.addEventListener("click", () => {
         modal.style.display = "block";
         modalImg.style.display = "block";
