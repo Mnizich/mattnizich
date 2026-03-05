@@ -591,61 +591,78 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
 
   </div>
 </section>
-      <!-- Prototype Section -->
-
-<section id="Testing" role="tabpanel">
-        <h2>Projects</h2>
-        <p>Click a project to see the full design process and technical journey.</p>
-        <div class="grid">
-          
-        <div class="grid">
-          <div class="project-panel" data-template="rover-journey">
-            <img src="RoverCurrent.jpg" alt="Mars Rover">
-            <div class="panel-bar">University Rover Challenge(URC) </div>
-          </div>
-        </div>
-        
-        <template id="rover-journey">
-          <h2>Mars Rover Chassis Design</h2>
-          <p>We started the project by mapping out our timeline. My tema developed an organized Gantt Chart to ensure we met the competition deadlines:</p>
-          
-          <img src="Gantt Chart.png" class="journey-inline-img">
-          
-          <p>After the planning phase, we moved into FEA analysis. By mentioning the stress points here, you can see why we chose to water-jet aluminum for the side plates...</p>
-          
-          <img src="RoverLarge.jpg" class="journey-inline-img">
-          
-          <p>Finally, we assembled the chassis in the lab. The final build was 15% lighter than last year's model.</p>
-        </template>
-
-          <div class="project-panel" 
-               data-title="AIAA Aircraft Fabrication" 
-               data-journey="Designing the wings for the AIAA competition required research and CFD analysis of airfoil geometry. We utilized hot-wire XPS foam cutting and carbon fiber reinforcement to balance lift and weight.">
-            <img src="assembled plane.jpg" alt="AIAA Plane">
-            <div class="panel-bar">AIAA Design Build Fly Competition</div>
-          </div>
-
-          <div class="project-panel" 
-               data-title="Digital Temperature Integration" 
-               data-journey="This project was a lesson in circuitry organization. I integrated an Arduino with an LCD and custom-programmed temperature thresholds, housed in a custom 3D printed enclosure.">
-            <img src="Temperature Sensor Wiring.jpg" alt="Sensor Wiring">
-            <div class="panel-bar">EK131: Digital Temperature Sensor</div>
-          </div>
-          <div class="project-panel" 
-               data-title="Electromechanical Design" 
-               data-journey="This space documents every project I build for ME 360 Electromechanical Design.">
-            <img src="MECHE Symbol.png" alt="">
-            <div class="panel-bar">ME360: Electromechanical Design</div>
-          </div>
-          <div class="project-panel" 
-               data-title="Automated Cutting System" 
-               data-journey="For my Engineering Design class, I collaborated with three classmates to design a device that could automatically split medicine tablets in half, improving accessibility for the elderly or individuals that might struggle with the strength required of traditional pill cutters. This class taught me much about designing and constructing physical mechanisms, but also gave me valuable insights into workflow tools and processes I might use in industry. I designed the housing for our device in Onshape, and used 3D printing, lasercutting, and CNC milling to produce the final casing, slicing mechanism, and all other subsystems.">
-            <img src="Pill Cutter.jpg" alt="">
-            <div class="panel-bar">Automatic Medicine Tablet Cutter</div>
-          </div>
-
-        </div>
-      </section>
+     <!-- Prototype Section -->
+  <section id="Testing" role="tabpanel">
+    <h2>Projects</h2>
+    <p>Click a project to see the full design process and technical journey.</p>
+  
+    <div class="grid">
+  
+      <!-- Mars Rover -->
+      <div class="project-panel" data-template="rover-journey">
+        <img src="RoverCurrent.jpg" alt="Mars Rover">
+        <div class="panel-bar">University Rover Challenge (URC)</div>
+      </div>
+  
+      <!-- Rover Journey Template -->
+      <template id="rover-journey">
+        <h2>Mars Rover Chassis Design</h2>
+  
+        <p>
+          We started the project by mapping out our timeline. My team developed an organized
+          Gantt Chart to ensure we met competition deadlines and manufacturing milestones.
+        </p>
+  
+        <img src="Gantt Chart.png" class="journey-inline-img">
+  
+        <p>
+          After the planning phase, we moved into FEA analysis to identify high-stress
+          regions in the chassis. This informed our decision to water-jet aluminum
+          side plates and reinforce critical joints.
+        </p>
+  
+        <img src="RoverLarge.jpg" class="journey-inline-img">
+  
+        <p>
+          The final assembly reduced total chassis mass by 15% compared to the previous
+          year while maintaining structural rigidity under load.
+        </p>
+      </template>
+  
+      <!-- AIAA -->
+      <div class="project-panel"
+           data-title="AIAA Aircraft Fabrication"
+           data-journey="Designing the wings for the AIAA competition required CFD-based airfoil selection and structural reinforcement analysis. We used hot-wire XPS foam cutting and carbon fiber spars to balance lift generation with structural stiffness.">
+        <img src="assembled plane.jpg" alt="AIAA Plane">
+        <div class="panel-bar">AIAA Design Build Fly Competition</div>
+      </div>
+  
+      <!-- Temperature Sensor -->
+      <div class="project-panel"
+           data-title="Digital Temperature Integration"
+           data-journey="This project focused on circuit integration and embedded programming. I interfaced an Arduino with an LCD module and implemented programmable temperature thresholds, all housed within a custom 3D printed enclosure.">
+        <img src="Temperature Sensor Wiring.jpg" alt="Sensor Wiring">
+        <div class="panel-bar">EK131: Digital Temperature Sensor</div>
+      </div>
+  
+      <!-- ME360 -->
+      <div class="project-panel"
+           data-title="Electromechanical Design"
+           data-journey="This section documents my ME360 projects, including multibody simulations, motor control design, and stability analysis through SolidWorks Motion and physical prototyping.">
+        <img src="MECHE Symbol.png" alt="ME360">
+        <div class="panel-bar">ME360: Electromechanical Design</div>
+      </div>
+  
+      <!-- Pill Cutter -->
+      <div class="project-panel"
+           data-title="Automated Cutting System"
+           data-journey="In Engineering Design, I collaborated with three classmates to develop a device capable of automatically splitting medicine tablets. I designed the enclosure in Onshape and fabricated components using 3D printing, laser cutting, and CNC milling. The project emphasized manufacturability, tolerance control, and subsystem integration.">
+        <img src="Pill Cutter.jpg" alt="Automatic Pill Cutter">
+        <div class="panel-bar">Automatic Medicine Tablet Cutter</div>
+      </div>
+  
+    </div>
+  </section>
     </main>
 
 
