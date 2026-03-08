@@ -562,7 +562,8 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
   </p>
   <p>
   In class, we completed several sessions focused on Arduino-based motor control. These exercises introduced embedded 
-  programming, sensor integration, and feedback control methods including bang-bang control and model predictive control. 
+  programming, sensor integration, and feedback control methods including bang-bang control and model predictive control. We also learned 
+  how to wire the arduino to a motor driver and encoder that we would use for our final cart design.
   Using these tools and the predicted acceleration requirements for the platform, I began assembling the cart. The wheels 
   were made with 3D-printed PLA plastic and the chassis and brackets were lasercut from MDF. Once all the parts were in place,
   we assembled the parts via wood glue and fasteners.
@@ -633,11 +634,11 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
   </p>
   
   <p>
-  Using graphical construction methods and the Math Illustrations software, I analyzed the relationship between crank rotation and coupler motion. By mapping
-  the desired start and end positions of the tray, I identified a feasible range of motion for
-  the coupler link that would rotate the tray while maintaining clearance within the container
-  volume. Link proportions were then selected to achieve this motion while preserving a
-  single degree of freedom for the mechanism, and the prototype was testing before moving on to a final design.
+  Using the Math Illustrations software, I analyzed the relationship between crank rotation and coupler motion. By mapping
+  the desired start and end positions of the tray, I identified a valid range of motion for
+  the coupler link that would rotate the tray while maintaining clearance around the container
+  volume. Link proportions were then selected to achieve this motion while preserving the
+  single degree of freedom for the mechanism.
   </p>
         <video autoplay loop muted playsinline style="width:50%; margin-top:18px; border:1px solid var(--border);">
           <source src="MathIllustrations.mp4" type="video/mp4"> Your browser does not support the video tag. 
@@ -647,10 +648,11 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
   to represent the pivot points mounted on the container walls. A motion study was then used
   to drive the crank through its full range of rotation and verify that the tray followed the
   intended trajectory. This simulation allowed me to confirm that the tray cleared the interior
-  surfaces of the container and delivered the trash to the rear opening without intermediate
-  spillage.
+  surfaces of the container and delivered the trash to the opening without ever letting the cargo slip off.
   </p>
-  
+  <video autoplay loop muted playsinline style="width:50%; margin-top:18px; border:1px solid var(--border);">
+          <source src="TrashCan.mp4" type="video/mp4"> Your browser does not support the video tag. 
+          </video>
   
   </section>
 </section>
