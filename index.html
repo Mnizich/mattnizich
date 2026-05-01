@@ -672,40 +672,31 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
 
   <p>
     The project began with the development of a prototype linear actuator. This 
-    initial stage was critical for understanding the mechanics of <b>prismatic joints</b> 
+    initial stage was critical for understanding the mechanics of prismatic joints 
     and the constraints of the provided 8020 aluminum extrusions. By treating the 
     extrusion as both a structural frame and a linear guide, we minimized machining 
     and focused on the rational design of 3D-printed carriages and motor mounts.
   </p>
-  <img src="Wiring.jpg" alt="Prototype Linear Actuator" style="width:50%; border:1px solid var(--border);" />
+  <img src="linear actuator.jpeg" alt="Prototype Linear Actuator" style="width:100%; border:1px solid var(--border);" />
   <p>
-    Using <b>SolidWorks</b>, I modeled a system where NEMA 17 stepper motors 
-    driven by timing belts controlled the X and Y stages. The assembly was designed 
-    for rapid deployment, utilizing standard fasteners and 3D-printed snap-fits to 
-    ensure the entire rig could be disassembled for transport and reassembled in 
-    under 10 minutes.
+    Using SolidWorks, I modeled a system where stacked NEMA 17 stepper motors 
+    controlled the X and Y stages. The assembly was designed utilizing standard fasteners and 3D-printed attachments to 
+    ensure the entire rig could be disassembled for transport and reassembled quickly and without the use of adhesives.
   </p>
 
-  <video autoplay loop muted playsinline style="width:50%; margin-top:18px; border:1px solid var(--border);">
-    <source src="LinearStagePrototyping.mp4" type="video/mp4"> 
-    Your browser does not support the video tag.
-  </video>
+  <img src="GantryMeasure.jpeg" alt="Initial Design" style="width:100%; border:1px solid var(--border);" />
 
   <p>
-    For the electrical subsystem, we utilized an <b>Arduino Mega 2560</b> paired 
-    with a <b>CNC Shield</b> to manage the current demands of the stepper 
-    motors. The end effector featured a <b>brushless DC pump</b> 
+    For the electrical subsystem, we utilized an Arduino Mega 2560 paired 
+    with a CNC Shield to manage the current demands of the stepper 
+    motors. The end effector featured a brushless DC pump 
     integrated into our custom made PLA housing. This allowed for software-controlled water 
-    delivery pulses at specific coordinate points. We configured <b>MKS Firmware</b> 
-    to handle the Cartesian kinematics through the Arduino Mega board. We used <b>Repetier-Host</b> to send 
+    delivery pulses at specific coordinate points. We configured MKS Firmware 
+    to handle the Cartesian kinematics through the Arduino Mega board. We used Repetier-Host to send 
     custom G-code to the machine, allowing us to script complex irrigation patterns 
     that optimized water distribution with ease. 
   </p>
-
-  <video autoplay loop muted playsinline style="width:100%; margin-top:18px; border:1px solid var(--border);">
-    <source src="IrrigatorDemo.mp4" type="video/mp4"> 
-    Your browser does not support the video tag.
-  </video>
+  <img src="finalMe360.jpeg" alt="Final Design" style="width:100%; border:1px solid var(--border);" />
 
 </section>
 </section>
