@@ -659,45 +659,62 @@ My name is Matthew Nizich, and I am a junior studying Mechanical Engineering at 
   
   <h3>2.5 DOF Soil Irrigator</h3>
   
+<section>
+
   <p>
-  This project required the design of a linkage system that would automatically remove a tray
-  after trash was deposited and guide it toward a rear opening of the container. The mechanism
-  had to move the tray along a controlled path so that the trash would not fall prematurely or
-  interfere with the interior of the container. Additionally, all pivot points were constrained
-  to the side walls of the container, meaning the linkage geometry had to remain fully
-  contained within the envelope of the housing.
+    As part of ME 360, my team designed and built a 2.5 DOF Cartesian motion system 
+    purposed for automated soil irrigation. The "2.5 DOF" designation refers to 
+    full XY-axis control for positioning with a binary or limited-range Z-axis—in 
+    this case, a controlled water delivery system. The challenge was to create a 
+    portable, backpack-friendly device capable of precise fluid delivery over a 
+    2.5" x 2.5" work area.
+  </p>
+
+  ## Prototyping & Kinematic Design
+  <p>
+    The project began with the development of a prototype linear actuator. This 
+    initial stage was critical for understanding the mechanics of <b>prismatic joints</b> 
+    and the constraints of the provided 8020 aluminum extrusions. By treating the 
+    extrusion as both a structural frame and a linear guide, we minimized machining 
+    and focused on the rational design of 3D-printed carriages and motor mounts.
   </p>
   
   <p>
-  To determine a suitable motion path, I first studied the kinematic requirements of the tray.
-  The motion needed to begin with a horizontal surface accessible to the user, followed by a
-  rearward and downward rotation that would carry the tray toward the disposal opening.
-  Rather than selecting link lengths arbitrarily, I applied four-bar linkage fundamentals
-  discussed in class to determine a motion range that satisfied these constraints.
+    Using <b>SolidWorks</b>, I modeled a system where NEMA 17 stepper motors 
+    driven by timing belts controlled the X and Y stages. The assembly was designed 
+    for rapid deployment, utilizing standard fasteners and 3D-printed snap-fits to 
+    ensure the entire rig could be disassembled for transport and reassembled in 
+    under 10 minutes.
   </p>
-  
+
+  <video autoplay loop muted playsinline style="width:50%; margin-top:18px; border:1px solid var(--border);">
+    <source src="LinearStagePrototyping.mp4" type="video/mp4"> 
+    Your browser does not support the video tag.
+  </video>
+
+  ## System Integration & Control
   <p>
-  Using the Math Illustrations software, I analyzed the relationship between crank rotation and coupler motion. By mapping
-  the desired start and end positions of the tray, I identified a valid range of motion for
-  the coupler link that would rotate the tray while maintaining clearance around the container
-  volume. Link proportions were then selected to achieve this motion while preserving the
-  single degree of freedom for the mechanism.
+    For the electrical subsystem, we utilized an <b>Arduino Mega 2560</b> paired 
+    with a <b>CNC Shield</b> to manage the high-current demands of the stepper 
+    motors. The "0.5 DOF" end effector featured a purpose-built <b>brushless DC pump</b> 
+    integrated into the carriage. This allowed for software-controlled water 
+    delivery pulses at specific coordinate points.
   </p>
-        <video autoplay loop muted playsinline style="width:50%; margin-top:18px; border:1px solid var(--border);">
-          <source src="MathIllustrations.mp4" type="video/mp4"> Your browser does not support the video tag. 
-          </video>
+
   <p>
-  Once the geometry was established, I modeled the linkage in SolidWorks using revolute joints
-  to represent the pivot points mounted on the container walls. A motion study was then used
-  to drive the crank through its full range of rotation and verify that the tray followed the
-  intended trajectory. This simulation allowed me to confirm that the tray cleared the interior
-  surfaces of the container and delivered the trash to the opening without ever letting the cargo slip off.
+    To bridge the gap between CAD and physical motion, I configured <b>MKS Firmware</b> 
+    to handle the Cartesian kinematics. We used <b>Repetier-Host</b> to send 
+    custom G-code to the machine, allowing us to script complex irrigation patterns 
+    that optimized water distribution while verifying the robustness of our 
+    mechanical joints under dynamic loading.
   </p>
+
   <video autoplay loop muted playsinline style="width:100%; margin-top:18px; border:1px solid var(--border);">
-          <source src="TrashCan.mp4" type="video/mp4"> Your browser does not support the video tag. 
-          </video>
-  
-  </section>
+    <source src="IrrigatorDemo.mp4" type="video/mp4"> 
+    Your browser does not support the video tag.
+  </video>
+
+</section>
 </section>
 
   </div>
